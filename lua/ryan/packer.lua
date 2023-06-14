@@ -10,10 +10,6 @@ return require('packer').startup(function(use)
 		requires = { {'nvim-lua/plenary.nvim'} }
 	}
 
-	use({ 'rose-pine/neovim', as = 'rose-pine' })
-
-	vim.cmd('colorscheme rose-pine')
-
 	use('luisiacc/gruvbox-baby', {branch = 'main', as = "gruvbox-baby"})
 
 	vim.cmd('colorscheme gruvbox-baby')
@@ -49,7 +45,13 @@ use('neovim/nvim-lspconfig')
 use('jose-elias-alvarez/null-ls.nvim')
 use('MunifTanjim/prettier.nvim')
 use('jiangmiao/auto-pairs')
+use({
+    "aserowy/tmux.nvim",
+    config = function() return require("tmux").setup() end
+})
+use('github/Copilot.vim')
+use('christoomey/vim-tmux-navigator')
+use('christoomey/vim-tmux-runner')
 end)
-
 
 
