@@ -14,7 +14,7 @@ I probably have some packages missing from this table to see all of them go to [
 
 | Map | Description |
 | :---- | :---- |
-| `<Esc>` | Escape or go back to Normal mode |
+| `<Esc>` | Escape or go back to Normal mode. |
 |`<leader>` | This is assigned to spacebar. |
 |`<C-?>` | This mean to use the ctrl key for the keymap. |
 | `:q` | Leave vim. |
@@ -33,14 +33,14 @@ I probably have some packages missing from this table to see all of them go to [
 | :---- | :---- |
 |`<leader>pv`| Opens netrw which is the Vim's native file explorer |
 |`<leader>pf`| Opens a fuzzy finder which allows you to access files quickly |
-|`<C-t>` | Toggles NVIM tree which is displays the the project files |
+|`<C-t>` | Toggles Nvim-tree which is displays the the project files in a nice window |
 | `<a>` | Creates a file |
 | `J` | Moves the current line down. |
 | `K` | Moves the current line up. |
 | `<C-e>` | Opens Harpoon menu to quickly change files. |
 | `<leader>a` | Adds a file into harpoon. |
 
-For other keymaps please visit [/lua/ryan/keymaps.lua](/lua/ryan/keymaps.lua) or the keymaps respective config file.
+For other keymaps please visit [/lua/ryan/keymaps.lua](/lua/ryan/remap.lua) or the keymaps respective config file located in the directory (/after/plugin)[/after/plugin].
 
 # Other
 
