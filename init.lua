@@ -18,8 +18,8 @@ local plugins = {
 		-- or                            , branch = '0.1.x',
 		dependencies = { {'nvim-lua/plenary.nvim'} }
 	},
-    {'luisiacc/gruvbox-baby', branch = 'main', as = "gruvbox-baby"},
-    {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'},
+    {'morhetz/gruvbox', name = "gruvbox"},
+    {'nvim-treesitter/nvim-treesitter', build = ':TSUpdate'},
 	'nvim-treesitter/playground',
     'theprimeagen/vim-with-me',
 	'theprimeagen/harpoon',
@@ -34,9 +34,8 @@ local plugins = {
 			{'neovim/nvim-lspconfig'},             -- Required
 			{                                      -- Optional
 			    'williamboman/mason.nvim',
-    		    run = function()
-				    pcall(vim.cmd, 'MasonUpdate')
-			    end,
+    		    build = ':MasonUpdate'
+			    
 		    },
 		    {'williamboman/mason-lspconfig.nvim'}, -- Optional
 
@@ -49,7 +48,7 @@ local plugins = {
     'neovim/nvim-lspconfig',
     'jose-elias-alvarez/null-ls.nvim',
     'MunifTanjim/prettier.nvim',
-    'jiangmiao/auto-pairs',
+    'rstacruz/vim-closer',
     'github/Copilot.vim',
     'christoomey/vim-tmux-navigator',
     'christoomey/vim-tmux-runner',
@@ -59,6 +58,20 @@ local plugins = {
             require("block").setup({})
         end
     },
+    {
+        'terrortylor/nvim-comment',
+        config = function()
+            require('nvim_comment').setup()
+        end
+    },
+    {
+        "nvim-tree/nvim-tree.lua",
+        version = "*", -- Or "branch:main"
+        dependencies = {"nvim-tree/nvim-web-devicons"},
+        config = function ()
+           require("nvim-tree").setup {}
+        end,
+    }
 }
 local opts = {}
 require("lazy").setup(plugins, opts)

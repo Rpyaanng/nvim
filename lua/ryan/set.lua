@@ -2,7 +2,7 @@ vim.opt.guicursor = "n-v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20" -- set cursor to
 vim.opt.termguicolors = true -- enable 24-bit RGB colors 
 
 vim.opt.cursorline = true -- highlight current linen-v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20
-vim.opt.wrap = false -- don't wrap lines
+vim.opt.wrap = true -- wrap lines
 vim.opt.display = "lastline" -- always show the last line
 vim.opt.autoread = true -- automatically reload files changed outside of vim
 
