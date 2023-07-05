@@ -26,6 +26,9 @@ I probably have some packages missing from this table to see all of them go to [
 | `w` | Go to the start of the next word in the buffer. |
 | `e` | Go to the end of the next world in the buffer. |
 | `ge` | Go to the end of the previous word in the buffer. |
+| `dd` | Deletes the  current line. |
+| `dw `|Deletes from the cursor to the end of the word  |
+ ` diw`| Deletes the entire word |
 
 # Key maps
 
@@ -33,12 +36,13 @@ I probably have some packages missing from this table to see all of them go to [
 | :---- | :---- |
 |`<leader>pv`| Opens netrw which is the Vim's native file explorer |
 |`<leader>pf`| Opens a fuzzy finder which allows you to access files quickly |
+|`<leader>gd`| Views the diagonstics in a floating window |
 |`<C-t>` | Toggles Nvim-tree which is displays the the project files in a nice window |
-| `<a>` | Creates a file |
 | `J` | Moves the current line down. |
 | `K` | Moves the current line up. |
 | `<C-e>` | Opens Harpoon menu to quickly change files. |
 | `<leader>a` | Adds a file into harpoon. |
+
 
 For other keymaps please visit [/lua/ryan/keymaps.lua](/lua/ryan/remap.lua) or the keymaps respective config file located in the directory (/after/plugin)[/after/plugin].
 

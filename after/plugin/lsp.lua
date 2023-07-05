@@ -11,22 +11,35 @@ lsp.ensure_installed({
 -- Fix Undefined global 'vim'
 lsp.nvim_workspace()
 
+local has_words_before = function()
+    if vim.api.nvim_buf_get_option(0, "buftype") == "prompt" then return false end
+    local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+    return col ~= 0 and vim.api.nvim_buf_get_text(0, line - 1, 0, line - 1, col, {})[1]:match("^%s*$") == nil
+end
 
 local cmp = require('cmp')
-local cmp_select = { behavior = cmp.SelectBehavior.Select }
 local cmp_mappings = lsp.defaults.cmp_mappings({
-    ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
-    ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
-    ['<CR>'] = cmp.mapping.confirm({ select = true }),
+    ['<CR>'] = cmp.mapping.confirm({
+        select = false,
+        behavior = cmp.ConfirmBehavior.Replace,
+    }),
     ["<C-Space>"] = cmp.mapping.complete(),
 })
 
 
-lsp.setup_nvim_cmp({
-    mapping = cmp_mappings
+cmp.setup({
+    sources = {
+        { name = 'copilot' },
+        { name = 'nvim_lsp' },
+        { name = 'path' },
+        { name = 'buffer' },
+    },
+    mapping = cmp_mappings,
 })
 
+
 lsp.set_sign_icons({
+    copilot = '"',
     error = '✘',
     warn = '▲',
     hint = '⚑',
@@ -35,18 +48,6 @@ lsp.set_sign_icons({
 
 lsp.set_preferences({
     suggest_lsp_servers = false,
-    sign_icons = {
-        error = '✘',
-        warn = '▲',
-        hint = '⚑',
-        info = '»'
-    }
-    -- sign_icons = {
-    --     error = 'E',
-    --     warn = 'W',
-    --     hint = 'H',
-    --     info = 'I'
-    -- }
 })
 
 lsp.on_attach(function(client, bufnr)
@@ -69,3 +70,5 @@ lsp.setup()
 vim.diagnostic.config({
     virtual_text = true
 })
+
+vim.api.nvim_set_hl(0, "CmpItemKindCopilot", { fg = "#6CC644" })

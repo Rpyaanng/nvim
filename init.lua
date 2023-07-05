@@ -20,16 +20,13 @@ local plugins = {
         dependencies = { { 'nvim-lua/plenary.nvim' } }
     },
     {
-        'projekt0n/github-nvim-theme',
-        lazy = false, -- make sure we load this during startup if it is your main colorscheme
-        priority = 1000, -- make sure to load this before all the other start plugins
+        "folke/tokyonight.nvim",
+        lazy = false,
+        priority = 1000,
+        opts = {},
         config = function()
-            require('github-theme').setup({
-                -- ...
-            })
-
-            vim.cmd('colorscheme github_dark')
-        end,
+            vim.cmd('colorscheme tokyonight-night')
+        end
     },
     { 'nvim-treesitter/nvim-treesitter', build = ':TSUpdate' },
     'nvim-treesitter/playground',
@@ -50,11 +47,10 @@ local plugins = {
 
             },
             { 'williamboman/mason-lspconfig.nvim' }, -- Optional
-
             -- Autocompletion
-            { 'hrsh7th/nvim-cmp' },     -- Required
-            { 'hrsh7th/cmp-nvim-lsp' }, -- Required
-            { 'L3MON4D3/LuaSnip' },     -- Required
+            { 'hrsh7th/nvim-cmp' },                  -- Required
+            { 'hrsh7th/cmp-nvim-lsp' },              -- Required
+            { 'L3MON4D3/LuaSnip' },                  -- Required
         }
     },
     'neovim/nvim-lspconfig',
@@ -64,12 +60,6 @@ local plugins = {
     'github/Copilot.vim',
     'christoomey/vim-tmux-navigator',
     'christoomey/vim-tmux-runner',
-    {
-        "HampusHauffman/block.nvim",
-        config = function()
-            require("block").setup({})
-        end
-    },
     {
         'terrortylor/nvim-comment',
         config = function()
@@ -91,7 +81,29 @@ local plugins = {
         config = function()
             require('lualine').setup()
         end,
+    },
+    {
+        "klen/nvim-test",
+        config = function()
+            require('nvim-test').setup()
+        end
+    },
+    {
+        "zbirenbaum/copilot.lua",
+        lazy = true,
+        cmd = "Copilot",
+        event = "InsertEnter",
+        config = function()
+            require("copilot").setup({})
+        end,
+    },
+    {
+        "zbirenbaum/copilot-cmp",
+        config = function()
+            require("copilot_cmp").setup()
+        end
     }
+
 }
 local opts = {}
 require("lazy").setup(plugins, opts)

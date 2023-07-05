@@ -33,7 +33,8 @@ vim.opt.updatetime = 50
 vim.opt.showmode = true -- show current mode
 vim.opt.wildmenu = true -- show possible completions in command line
 vim.opt.colorcolumn = "80" -- highlight 80th column
-
+vim.opt.hidden = true -- allow switching buffers without saving
 vim.opt["foldmethod"] = "indent" -- fold based on indent
 vim.opt["foldlevel"] = 99 -- open all folds by default
 vim.opt['foldenable'] = true -- enable folding
+vim.cmd('set hidden') -- allow switching buffers without saving
