@@ -54,9 +54,9 @@ local plugins = {
         }
     },
     'neovim/nvim-lspconfig',
-    'jose-elias-alvarez/null-ls.nvim',
+    -- 'jose-elias-alvarez/null-ls.nvim',
     'MunifTanjim/prettier.nvim',
-    'rstacruz/vim-closer',
+    'jiangmiao/auto-pairs',
     'github/Copilot.vim',
     'christoomey/vim-tmux-navigator',
     'christoomey/vim-tmux-runner',
@@ -102,8 +102,68 @@ local plugins = {
         config = function()
             require("copilot_cmp").setup()
         end
-    }
+    },
+    {
+        "xiyaowong/virtcolumn.nvim",
+        config = function()
+            vim.g.virtcolumn_char = '▕'
+            vim.g.virtcolumn_priority = 10
+        end
+    },
+    {
+        'goolord/alpha-nvim',
+        event = 'VimEnter',
+        dependencies = {
+            'nvim-tree/nvim-web-devicons',
+        },
 
+        config = function()
+            local alpha = require 'alpha'
+            local dashboard = require 'alpha.themes.dashboard'
+            dashboard.section.header.val = {
+                [[ ,ggg, ,ggggggg,                                                               ]],
+                [[dP""Y8,8P"""""Y8b                                                              ]],
+                [[Yb, `8dP'     `88                                                              ]],
+                [[ `"  88'       88                                        gg                    ]],
+                [[     88        88                                        ""                    ]],
+                [[     88        88   ,ggg,     ,ggggg,       ggg    gg    gg    ,ggg,,ggg,,ggg, ]],
+                [[     88        88  i8" "8i   dP"  "Y8ggg   d8"Yb   88bg  88   ,8" "8P" "8P""8, ]],
+                [[     88        88  I8, ,8I  i8'    ,8I    dP  I8   8I    88   I8   8I   8I  8I ]],
+                [[     88        Y8, `YbadP' ,d8,   ,d8'  ,dP   I8, ,8I  _,88,_,dP   8I   8I  Yb,]],
+                [[     88        `Y8888P"Y888P"Y8888P"    8"     "Y8P"   8P""Y88P'   8I   8I `Y8 ]],
+            }
+
+            local builtin = require('telescope.builtin')
+            vim.keymap.set('n', '<leader>pf', builtin.find_files, {})
+            dashboard.section.buttons.val = {
+                dashboard.button("e", "  New file", ":ene <BAR> startinsert <CR>"),
+                dashboard.button("f", " " .. " Find file", ":Telescope find_files <CR>"),
+                dashboard.button("r", " " .. " Recent files", ":Telescope oldfiles <CR>"),
+                dashboard.button("g", " " .. " Find text", ":Telescope live_grep <CR>"),
+                dashboard.button("l", "󰒲 " .. " Lazy", ":Lazy<CR>"),
+                dashboard.button("c", " " .. " Config", ":e $MYVIMRC <CR>"),
+                dashboard.button("q", "X " .. " Quit nvim", ":qa<cr>"),
+            }
+            for _, button in ipairs(dashboard.section.buttons.val) do
+                button.opts.hl = "AlphaButtons"
+                button.opts.hl_shortcut = "AlphaShortcut"
+            end
+            dashboard.section.header.opts.hl = "AlphaHeader"
+            dashboard.section.buttons.opts.hl = "AlphaButtons"
+            dashboard.section.footer.opts.hl = "AlphaFooter"
+            dashboard.opts.layout[1].val = 8
+            local handle = io.popen('fortune')
+            local fortune = handle:read("*a")
+            handle:close()
+            dashboard.section.footer.val = fortune
+
+            dashboard.config.opts.noautocmd = true
+
+            vim.cmd [[autocmd User AlphaReady echo 'ready']]
+
+            alpha.setup(dashboard.config)
+        end
+    }
 }
 local opts = {}
 require("lazy").setup(plugins, opts)

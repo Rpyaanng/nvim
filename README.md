@@ -14,21 +14,22 @@ I probably have some packages missing from this table to see all of them go to [
 
 | Map | Description |
 | :---- | :---- |
-| `<Esc>` | Escape or go back to Normal mode. |
-|`<leader>` | This is assigned to spacebar. |
-|`<C-?>` | This mean to use the ctrl key for the keymap. |
-| `:q` | Leave vim. |
-| `:w` | Save file. |
-| `x` | A character. |
-| `X` | Shift + character. |
-| `i` | Insert mode |
-| `a` | Insert into append |
-| `w` | Go to the start of the next word in the buffer. |
-| `e` | Go to the end of the next world in the buffer. |
-| `ge` | Go to the end of the previous word in the buffer. |
-| `dd` | Deletes the  current line. |
-| `dw `|Deletes from the cursor to the end of the word  |
- ` diw`| Deletes the entire word |
+| ` <Esc> ` | Escape or go back to Normal mode. |
+| ` <leader> ` | This is assigned to spacebar. |
+| ` <C-?> ` | This mean to use the ctrl key for the keymap. |
+| ` :q ` | Leave vim. |
+| ` :w ` | Save file. |
+| ` x ` | A character. |
+| ` X ` | Shift + character. |
+| ` i ` | Insert mode |
+| ` a ` | Insert into append |
+| ` w ` | Go to the start of the next word in the buffer. |
+| ` e ` | Go to the end of the next world in the buffer. |
+| ` ge`  | Go to the end of the previous word in the buffer. |
+| ` dd ` | Deletes the  current line. |
+| ` dw `| Deletes from the cursor to the end of the word  |
+| ` diw ` | Deletes the entire word |
+| ` za ` |  Toggles code fold. |
 
 # Key maps
 
