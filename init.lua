@@ -29,6 +29,7 @@ local plugins = {
       vim.cmd('colorscheme tokyonight-night')
     end
   },
+  'nvim-lua/plenary.nvim',
   { 'nvim-treesitter/nvim-treesitter', build = ':TSUpdate' },
   'nvim-treesitter/playground',
   'theprimeagen/vim-with-me',
@@ -98,6 +99,23 @@ local plugins = {
     end,
   },
   {
+    "Dhanus3133/LeetBuddy.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-telescope/telescope.nvim",
+    },
+    config = function()
+      require("leetbuddy").setup({})
+    end,
+    keys = {
+      { "<leader>lq", "<cmd>LBQuestions<cr>", desc = "List Questions" },
+      { "<leader>ll", "<cmd>LBQuestion<cr>",  desc = "View Question" },
+      { "<leader>lr", "<cmd>LBReset<cr>",     desc = "Reset Code" },
+      { "<leader>lt", "<cmd>LBTest<cr>",      desc = "Run Code" },
+      { "<leader>ls", "<cmd>LBSubmit<cr>",    desc = "Submit Code" },
+    },
+  },
+  {
     "zbirenbaum/copilot-cmp",
     config = function()
       require("copilot_cmp").setup()
@@ -110,6 +128,32 @@ local plugins = {
       vim.g.virtcolumn_priority = 10
     end
   },
+  { -- This plugin
+    "Zeioth/compiler.nvim",
+    cmd = { "CompilerOpen", "CompilerToggleResults" },
+    dependencies = { "stevearc/overseer.nvim" },
+    config = function(_, opts) require("compiler").setup(opts) end,
+  },
+  {                                                      -- The framework we use to run tasks
+    "stevearc/overseer.nvim",
+    commit = "3047ede61cc1308069ad1184c0d447ebee92d749", -- Recommended to to avoid breaking changes
+    cmd = { "CompilerOpen", "CompilerToggleResults" },
+    opts = {
+      -- Tasks are disposed 5 minutes after running to free resources.
+      -- If you need to close a task inmediatelly:
+      -- press ENTER in the menu you see after compiling on the task you want to close.
+      task_list = {
+        direction = "bottom",
+        min_height = 25,
+        max_height = 25,
+        default_detail = 1,
+        bindings = {
+          ["q"] = function() vim.cmd("OverseerClose") end,
+        },
+      },
+    },
+  },
+  "lukas-reineke/indent-blankline.nvim",
   {
     'goolord/alpha-nvim',
     event = 'VimEnter',
@@ -165,6 +209,7 @@ local plugins = {
       alpha.setup(dashboard.config)
     end
   },
+
   -- Themes Start here
   "zaldih/themery.nvim",
   "catppuccin/nvim",
@@ -177,6 +222,7 @@ local plugins = {
   },
   'olivercederborg/poimandres.nvim',
   -- Themes end here.
+
 }
 local opts = {}
 require("lazy").setup(plugins, opts)
