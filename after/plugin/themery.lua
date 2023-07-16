@@ -24,7 +24,6 @@ require("themery").setup({
       colorscheme = "rose-pine",
       after = [[
         vim.opt.background = "dark"
-        ColorMyPencils()
       ]],
     },
     {
@@ -54,7 +53,4 @@ require("themery").setup({
   },                                                          -- Your list of installed colorschemes
   themeConfigFile = "~/.config/nvim/after/plugin/colors.lua", -- Described below
   livePreview = true,                                         -- Apply theme while browsing. Default to true.
-  after = [[
-    ColorMyPencils()
-  ]]
 })

@@ -20,17 +20,23 @@ local plugins = {
     -- or                            , branch = '0.1.x',
     dependencies = { { 'nvim-lua/plenary.nvim' } }
   },
-  {
-    "folke/tokyonight.nvim",
-    lazy = false,
-    priority = 1000,
-    opts = {},
-    config = function()
-      vim.cmd('colorscheme tokyonight-night')
-    end
-  },
   'nvim-lua/plenary.nvim',
   { 'nvim-treesitter/nvim-treesitter', build = ':TSUpdate' },
+  {
+    'romgrk/barbar.nvim',
+    dependencies = {
+      'lewis6991/gitsigns.nvim',     -- OPTIONAL: for git status
+      'nvim-tree/nvim-web-devicons', -- OPTIONAL: for file icons
+    },
+    init = function() vim.g.barbar_auto_setup = true end,
+    opts = {
+      -- lazy.nvim will automatically call setup for you. put your options here, anything missing will use the default:
+      -- animation = true,
+      -- insert_at_start = true,
+      -- …etc.
+    },
+    version = '^1.0.0', -- optional: only update when a new 1.x version is released
+  },
   'nvim-treesitter/playground',
   'theprimeagen/vim-with-me',
   'theprimeagen/harpoon',
@@ -99,23 +105,6 @@ local plugins = {
     end,
   },
   {
-    "Dhanus3133/LeetBuddy.nvim",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "nvim-telescope/telescope.nvim",
-    },
-    config = function()
-      require("leetbuddy").setup({})
-    end,
-    keys = {
-      { "<leader>lq", "<cmd>LBQuestions<cr>", desc = "List Questions" },
-      { "<leader>ll", "<cmd>LBQuestion<cr>",  desc = "View Question" },
-      { "<leader>lr", "<cmd>LBReset<cr>",     desc = "Reset Code" },
-      { "<leader>lt", "<cmd>LBTest<cr>",      desc = "Run Code" },
-      { "<leader>ls", "<cmd>LBSubmit<cr>",    desc = "Submit Code" },
-    },
-  },
-  {
     "zbirenbaum/copilot-cmp",
     config = function()
       require("copilot_cmp").setup()
@@ -127,31 +116,6 @@ local plugins = {
       vim.g.virtcolumn_char = '▕'
       vim.g.virtcolumn_priority = 10
     end
-  },
-  { -- This plugin
-    "Zeioth/compiler.nvim",
-    cmd = { "CompilerOpen", "CompilerToggleResults" },
-    dependencies = { "stevearc/overseer.nvim" },
-    config = function(_, opts) require("compiler").setup(opts) end,
-  },
-  {                                                      -- The framework we use to run tasks
-    "stevearc/overseer.nvim",
-    commit = "3047ede61cc1308069ad1184c0d447ebee92d749", -- Recommended to to avoid breaking changes
-    cmd = { "CompilerOpen", "CompilerToggleResults" },
-    opts = {
-      -- Tasks are disposed 5 minutes after running to free resources.
-      -- If you need to close a task inmediatelly:
-      -- press ENTER in the menu you see after compiling on the task you want to close.
-      task_list = {
-        direction = "bottom",
-        min_height = 25,
-        max_height = 25,
-        default_detail = 1,
-        bindings = {
-          ["q"] = function() vim.cmd("OverseerClose") end,
-        },
-      },
-    },
   },
   "lukas-reineke/indent-blankline.nvim",
   {
@@ -221,6 +185,11 @@ local plugins = {
     dependencies = { 'rktjmp/lush.nvim' },
   },
   'olivercederborg/poimandres.nvim',
+  {
+    "folke/tokyonight.nvim",
+    priority = 1000,
+    opts = {},
+  },
   -- Themes end here.
 
 }
