@@ -50,6 +50,20 @@ require("themery").setup({
         ColorMyPencils()
       ]],
     },
+    {
+      name = "github dark",
+      colorscheme = "github_dark",
+      after = [[
+        vim.opt.background = "dark"
+      ]],
+    },
+    {
+      name = "github light",
+      colorscheme = "github_light",
+      after = [[
+        vim.opt.background = "light"
+      ]],
+    },
   },                                                          -- Your list of installed colorschemes
   themeConfigFile = "~/.config/nvim/after/plugin/colors.lua", -- Described below
   livePreview = true,                                         -- Apply theme while browsing. Default to true.

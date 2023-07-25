@@ -1,7 +1,4 @@
---[[ Comment:
-    Set cursor to a vertical bar in normal mode, block in visual mode,
-    and a horizontal bar in replace mode
---]]
+-- Set cursor to a vertical bar in normal mode, block in visual mode,and a horizontal bar in replace mode
 vim.opt.guicursor = "n-v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20"
 
 vim.opt.termguicolors = true -- enable 24-bit RGB colors

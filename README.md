@@ -44,7 +44,6 @@ I probably have some packages missing from this table to see all of them go to [
 | `<C-e>` | Opens Harpoon menu to quickly change files. |
 | `<leader>a` | Adds a file into harpoon. |
 
-
 For other keymaps please visit [/lua/ryan/keymaps.lua](/lua/ryan/remap.lua) or the keymaps respective config file located in the directory (/after/plugin)[/after/plugin].
 
 # Other

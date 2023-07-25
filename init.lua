@@ -12,7 +12,6 @@ if not vim.loop.fs_stat(lazypath) then
   })
 end
 vim.opt.rtp:prepend(lazypath)
-
 local plugins = {
   {
     'nvim-telescope/telescope.nvim',
@@ -22,6 +21,14 @@ local plugins = {
   },
   'nvim-lua/plenary.nvim',
   { 'nvim-treesitter/nvim-treesitter', build = ':TSUpdate' },
+  {
+    'Wansmer/treesj',
+    keys = { '<space>m', '<space>j', '<space>s' },
+    dependencies = { 'nvim-treesitter/nvim-treesitter' },
+    config = function()
+      require('treesj').setup({ --[[ your config ]] })
+    end,
+  },
   {
     'romgrk/barbar.nvim',
     dependencies = {
@@ -37,11 +44,63 @@ local plugins = {
     },
     version = '^1.0.0', -- optional: only update when a new 1.x version is released
   },
+  {
+    'iamcco/markdown-preview.nvim',
+    config = function() vim.fn['mkdp#util#install']() end,
+  },
+  {
+    'nacro90/numb.nvim',
+    config = function() require('numb').setup() end,
+  },
+  {
+    "Dhanus3133/LeetBuddy.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-telescope/telescope.nvim",
+    },
+    config = function()
+      require("leetbuddy").setup({})
+    end,
+    keys = {
+      { "<leader>lq", "<cmd>LBQuestions<cr>", desc = "List Questions" },
+      { "<leader>ll", "<cmd>LBQuestion<cr>",  desc = "View Question" },
+      { "<leader>lr", "<cmd>LBReset<cr>",     desc = "Reset Code" },
+      { "<leader>lt", "<cmd>LBTest<cr>",      desc = "Run Code" },
+      { "<leader>ls", "<cmd>LBSubmit<cr>",    desc = "Submit Code" },
+    },
+  },
+  {
+    'abecodes/tabout.nvim',
+    config = function()
+      require('tabout').setup {
+        tabkey = '<S-Tab>',             -- key to trigger tabout, set to an empty string to disable
+        backwards_tabkey = '<S-Space>', -- key to trigger backwards tabout, set to an empty string to disable
+        act_as_tab = true,              -- shift content if tab out is not possible
+        act_as_shift_tab = false,       -- reverse shift content if tab out is not possible (if your keyboard/terminal supports <S-Tab>)
+        default_tab = '<A-t>',          -- shift default action (only at the beginning of a line, otherwise <TAB> is used)
+        default_shift_tab = '<A-T>',    -- reverse shift default action,
+        enable_backwards = true,        -- well ...
+        completion = true,              -- if the tabkey is used in a completion pum
+        tabouts = {
+          { open = "'", close = "'" },
+          { open = '"', close = '"' },
+          { open = '`', close = '`' },
+          { open = '(', close = ')' },
+          { open = '[', close = ']' },
+          { open = '{', close = '}' }
+        },
+        ignore_beginning = true, --[[ if the cursor is at the beginning of a filled element it will rather tab out than shift the content ]]
+        exclude = {} -- tabout will ignore these filetypes
+      }
+    end,
+    dependencies = { 'nvim-treesitter', 'nvim-cmp' }
+  },
   'nvim-treesitter/playground',
   'theprimeagen/vim-with-me',
   'theprimeagen/harpoon',
   'mbbill/undotree',
   'tpope/vim-fugitive',
+  'sindrets/diffview.nvim',
   'folke/zen-mode.nvim',
   {
     'VonHeikemen/lsp-zero.nvim',
@@ -52,7 +111,6 @@ local plugins = {
       {                            -- Optional
         'williamboman/mason.nvim',
         build = ':MasonUpdate'
-
       },
       { 'williamboman/mason-lspconfig.nvim' }, -- Optional
       -- Autocompletion
@@ -117,6 +175,15 @@ local plugins = {
       vim.g.virtcolumn_priority = 10
     end
   },
+  {
+    "folke/todo-comments.nvim",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    opts = {
+      -- your configuration comes here
+      -- or leave it empty to use the default settings
+      -- refer to the configuration section below
+    }
+  },
   "lukas-reineke/indent-blankline.nvim",
   {
     'goolord/alpha-nvim',
@@ -124,7 +191,6 @@ local plugins = {
     dependencies = {
       'nvim-tree/nvim-web-devicons',
     },
-
     config = function()
       local alpha = require 'alpha'
       local dashboard = require 'alpha.themes.dashboard'
@@ -173,7 +239,6 @@ local plugins = {
       alpha.setup(dashboard.config)
     end
   },
-
   -- Themes Start here
   "zaldih/themery.nvim",
   "catppuccin/nvim",
@@ -190,6 +255,7 @@ local plugins = {
     priority = 1000,
     opts = {},
   },
+  { 'projekt0n/github-nvim-theme' }
   -- Themes end here.
 
 }
