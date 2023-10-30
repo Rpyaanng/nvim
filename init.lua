@@ -122,7 +122,6 @@ local plugins = {
   'neovim/nvim-lspconfig',
   'MunifTanjim/prettier.nvim',
   'jiangmiao/auto-pairs',
-  'github/Copilot.vim',
   'christoomey/vim-tmux-navigator',
   'christoomey/vim-tmux-runner',
   {
