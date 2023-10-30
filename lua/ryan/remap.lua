@@ -11,8 +11,8 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 
-vim.keymap.set("n", "<leader>o", "o<Esc>")
-vim.keymap.set("n", "<leader>O", "O<Esc>")
+vim.keymap.set("n", "<leader>o", "i<CR><Esc>")
+
 
 -- greatest remap ever
 vim.keymap.set("x", "<leader>p", [["_dP]])
