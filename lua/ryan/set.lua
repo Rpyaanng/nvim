@@ -6,12 +6,12 @@ vim.opt.termguicolors = true -- enable 24-bit RGB colors
 -- highlight current line
 vim.opt.cursorline = true
 
-vim.opt.wrap = false          -- wrap lines
-vim.opt.display = "lastline"  -- always show the last line
-vim.opt.autoread = true       -- automatically reload files changed outside of vim
+vim.opt.wrap = false           -- wrap lines
+vim.opt.display = "lastline"   -- always show the last line
+vim.opt.autoread = true        -- automatically reload files changed outside of vim
 
-vim.opt.nu = true             -- show line numbers
-vim.opt.relativenumber = true -- show relative line numbers
+vim.opt.nu = true              -- show line numbers
+vim.opt.relativenumber = false -- show relative line numbers
 
 -- copy indent from current line when starting a new line
 vim.opt.autoindent = true

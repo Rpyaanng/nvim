@@ -20,29 +20,8 @@ local plugins = {
     dependencies = { { 'nvim-lua/plenary.nvim' } }
   },
   'nvim-lua/plenary.nvim',
-  { 'nvim-treesitter/nvim-treesitter', build = ':TSUpdate' },
   {
-    'Wansmer/treesj',
-    keys = { '<space>m', '<space>j', '<space>s' },
-    dependencies = { 'nvim-treesitter/nvim-treesitter' },
-    config = function()
-      require('treesj').setup({ --[[ your config ]] })
-    end,
-  },
-  {
-    'romgrk/barbar.nvim',
-    dependencies = {
-      'lewis6991/gitsigns.nvim',     -- OPTIONAL: for git status
-      'nvim-tree/nvim-web-devicons', -- OPTIONAL: for file icons
-    },
-    init = function() vim.g.barbar_auto_setup = true end,
-    opts = {
-      -- lazy.nvim will automatically call setup for you. put your options here, anything missing will use the default:
-      -- animation = true,
-      -- insert_at_start = true,
-      -- …etc.
-    },
-    version = '^1.0.0', -- optional: only update when a new 1.x version is released
+    'nvim-treesitter/nvim-treesitter', build = ':TSUpdate'
   },
   {
     'iamcco/markdown-preview.nvim',
@@ -69,32 +48,9 @@ local plugins = {
       { "<leader>ls", "<cmd>LBSubmit<cr>",    desc = "Submit Code" },
     },
   },
-  {
-    'abecodes/tabout.nvim',
-    config = function()
-      require('tabout').setup {
-        tabkey = '<S-Tab>',             -- key to trigger tabout, set to an empty string to disable
-        backwards_tabkey = '<S-Space>', -- key to trigger backwards tabout, set to an empty string to disable
-        act_as_tab = true,              -- shift content if tab out is not possible
-        act_as_shift_tab = false,       -- reverse shift content if tab out is not possible (if your keyboard/terminal supports <S-Tab>)
-        default_tab = '<A-t>',          -- shift default action (only at the beginning of a line, otherwise <TAB> is used)
-        default_shift_tab = '<A-T>',    -- reverse shift default action,
-        enable_backwards = true,        -- well ...
-        completion = true,              -- if the tabkey is used in a completion pum
-        tabouts = {
-          { open = "'", close = "'" },
-          { open = '"', close = '"' },
-          { open = '`', close = '`' },
-          { open = '(', close = ')' },
-          { open = '[', close = ']' },
-          { open = '{', close = '}' }
-        },
-        ignore_beginning = true, --[[ if the cursor is at the beginning of a filled element it will rather tab out than shift the content ]]
-        exclude = {} -- tabout will ignore these filetypes
-      }
-    end,
-    dependencies = { 'nvim-treesitter', 'nvim-cmp' }
-  },
+  'edkolev/tmuxline.vim',
+  'itchyny/lightline.vim',
+  'vim-airline/vim-airline',
   'nvim-treesitter/playground',
   'theprimeagen/vim-with-me',
   'theprimeagen/harpoon',
@@ -254,7 +210,15 @@ local plugins = {
     priority = 1000,
     opts = {},
   },
-  { 'projekt0n/github-nvim-theme' }
+  'projekt0n/github-nvim-theme',
+  {
+    "loctvl842/monokai-pro.nvim",
+    config = function()
+      require("monokai-pro").setup()
+    end
+  },
+  'sainnhe/sonokai',
+  'sainnhe/everforest',
   -- Themes end here.
 
 }

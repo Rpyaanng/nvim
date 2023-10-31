@@ -12,9 +12,9 @@ end
 
 -- Themery block
 -- This block will be replaced by Themery.
-vim.cmd("colorscheme poimandres")
+vim.cmd("colorscheme everforest")
 
 vim.opt.background = "dark"
-ColorMyPencils()
+vim.g.everforest_background = 'soft'
 
 -- end themery block

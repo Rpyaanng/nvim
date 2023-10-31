@@ -64,6 +64,36 @@ require("themery").setup({
         vim.opt.background = "light"
       ]],
     },
+    {
+      name = "monokai pro",
+      colorscheme = "monokai-pro",
+      after = [[
+        vim.opt.background = "dark"
+      ]],
+    },
+    {
+      name = "sonokai",
+      colorscheme = "sonokai",
+      after = [[
+        vim.opt.background = "dark"
+      ]],
+    },
+    {
+      name = "everforest dark",
+      colorscheme = "everforest",
+      after = [[
+        vim.opt.background = "dark"
+        vim.g.everforest_background = 'soft'
+      ]],
+    },
+    {
+      name = "everforest light",
+      colorscheme = "everforest",
+      after = [[
+        vim.opt.background = "light"
+        vim.g.everforest_background = 'soft'
+      ]],
+    },
   },                                                          -- Your list of installed colorschemes
   themeConfigFile = "~/.config/nvim/after/plugin/colors.lua", -- Described below
   livePreview = true,                                         -- Apply theme while browsing. Default to true.
