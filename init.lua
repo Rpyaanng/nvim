@@ -72,7 +72,9 @@ local plugins = {
       -- Autocompletion
       { 'hrsh7th/nvim-cmp' },                  -- Required
       { 'hrsh7th/cmp-nvim-lsp' },              -- Required
+      { 'hrsh7th/cmp-buffer' },                -- Required
       { 'L3MON4D3/LuaSnip' },                  -- Required
+      { 'saadparwaiz1/cmp_luasnip' }
     }
   },
   'neovim/nvim-lspconfig',
@@ -109,21 +111,6 @@ local plugins = {
     end
   },
   {
-    "zbirenbaum/copilot.lua",
-    lazy = true,
-    cmd = "Copilot",
-    event = "InsertEnter",
-    config = function()
-      require("copilot").setup({})
-    end,
-  },
-  {
-    "zbirenbaum/copilot-cmp",
-    config = function()
-      require("copilot_cmp").setup()
-    end
-  },
-  {
     "xiyaowong/virtcolumn.nvim",
     config = function()
       vim.g.virtcolumn_char = '▕'
@@ -139,7 +126,7 @@ local plugins = {
       -- refer to the configuration section below
     }
   },
-  "lukas-reineke/indent-blankline.nvim",
+  { "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {}, dependencies = { "HiPhish/rainbow-delimiters.nvim" } },
   {
     'goolord/alpha-nvim',
     event = 'VimEnter',

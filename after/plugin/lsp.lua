@@ -12,31 +12,83 @@ lsp.ensure_installed({
 lsp.nvim_workspace()
 
 local has_words_before = function()
-  if vim.api.nvim_buf_get_option(0, "buftype") == "prompt" then return false end
+  unpack = unpack or table.unpack
   local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-  return col ~= 0 and vim.api.nvim_buf_get_text(0, line - 1, 0, line - 1, col, {})[1]:match("^%s*$") == nil
+  return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
 end
 
 local cmp = require('cmp')
+local cmp_action = lsp.cmp_action()
+local luasnip = require("luasnip")
 local cmp_mappings = lsp.defaults.cmp_mappings({
-  ['<CR>'] = cmp.mapping.confirm({
-    select = false,
-    behavior = cmp.ConfirmBehavior.Replace,
-  }),
-  ["<C-Space>"] = cmp.mapping.complete(),
+  -- `Enter` key to confirm completion
+  ['<CR>'] = cmp.mapping.confirm({ select = true }),
+  ["<Tab>"] = cmp.mapping(function(fallback)
+    if cmp.visible() then
+      cmp.select_next_item()
+      -- You could replace the expand_or_jumpable() calls with expand_or_locally_jumpable()
+      -- that way you will only jump inside the snippet region
+    elseif luasnip.expand_or_jumpable() then
+      luasnip.expand_or_jump()
+    elseif has_words_before() then
+      cmp.complete()
+    else
+      fallback()
+    end
+  end, { "i", "s" }),
+
+  ["<S-Tab>"] = cmp.mapping(function(fallback)
+    if cmp.visible() then
+      cmp.select_prev_item()
+    elseif luasnip.jumpable(-1) then
+      luasnip.jump(-1)
+    else
+      fallback()
+    end
+  end, { "i", "s" }),
+  -- Ctrl+Space to trigger completion menu
+  ['<C-Space>'] = cmp.mapping.complete(),
+
+  -- Navigate between snippet placeholder
+  ['<C-f>'] = cmp_action.luasnip_jump_forward(),
+  ['<C-b>'] = cmp_action.luasnip_jump_backward(),
+
+  -- Scroll up and down in the completion documentation
+  ['<C-u>'] = cmp.mapping.scroll_docs(-4),
+  ['<C-d>'] = cmp.mapping.scroll_docs(4),
 })
 
+local cmp_snippets = {
+  expand = function(args)
+    require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+  end,
+}
 
-cmp.setup({
-  sources = {
+local cmp_sources = cmp.config.sources({
     { name = 'copilot' },
     { name = 'nvim_lsp' },
+    { name = 'luasnip' },
     { name = 'path' },
-    { name = 'buffer' },
   },
-  mapping = cmp_mappings,
-})
+  {
+    { name = 'buffer' },
 
+  }
+)
+
+cmp.setup({
+  sources = cmp_sources,
+  mapping = cmp_mappings,
+  snippet = cmp_snippets,
+  experimental = {
+    ghost_text = true,
+  },
+  window = {
+    documentation = cmp.config.window.bordered({
+      winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,CursorLine:PmenuSel,Search:None",
+    }),
+  },
+})
 
 lsp.set_sign_icons({
   copilot = '"',
@@ -47,7 +99,7 @@ lsp.set_sign_icons({
 })
 
 lsp.set_preferences({
-  suggest_lsp_servers = false,
+  suggest_lsp_servers = true,
 })
 
 lsp.on_attach(function(client, bufnr)
@@ -65,7 +117,7 @@ lsp.on_attach(function(client, bufnr)
   vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
 
   local group = vim.api.nvim_create_augroup("lsp_format_on_save", { clear = false })
-  local event = "BufWritePre"   -- or "BufWritePost"
+  local event = "BufWritePre" -- or "BufWritePost"
   local async = event == "BufWritePost"
 
   if client.supports_method("textDocument/formatting") then
