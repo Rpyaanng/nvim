@@ -76,6 +76,7 @@ require("themery").setup({
       colorscheme = "sonokai",
       after = [[
         vim.opt.background = "dark"
+        ColorMyPencils()
       ]],
     },
     {
