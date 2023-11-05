@@ -49,6 +49,7 @@ local plugins = {
     },
   },
   'edkolev/tmuxline.vim',
+  'folke/trouble.nvim',
   'itchyny/lightline.vim',
   'vim-airline/vim-airline',
   'nvim-treesitter/playground',
@@ -58,6 +59,12 @@ local plugins = {
   'tpope/vim-fugitive',
   'sindrets/diffview.nvim',
   'folke/zen-mode.nvim',
+  {
+    'MaximilianLloyd/ascii.nvim',
+    dependencies = {
+      'MunifTanjim/nui.nvim'
+    }
+  },
   {
     'VonHeikemen/lsp-zero.nvim',
     branch = 'v2.x',
@@ -126,29 +133,20 @@ local plugins = {
       -- refer to the configuration section below
     }
   },
+  { "tpope/vim-surround" },
   { "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {}, dependencies = { "HiPhish/rainbow-delimiters.nvim" } },
   {
     'goolord/alpha-nvim',
     event = 'VimEnter',
     dependencies = {
       'nvim-tree/nvim-web-devicons',
+      'MaximilianLloyd/ascii.nvim'
     },
     config = function()
       local alpha = require 'alpha'
       local dashboard = require 'alpha.themes.dashboard'
-      dashboard.section.header.val = {
-        [[ ,ggg, ,ggggggg,                                                               ]],
-        [[dP""Y8,8P"""""Y8b                                                              ]],
-        [[Yb, `8dP'     `88                                                              ]],
-        [[ `"  88'       88                                        gg                    ]],
-        [[     88        88                                        ""                    ]],
-        [[     88        88   ,ggg,     ,ggggg,       ggg    gg    gg    ,ggg,,ggg,,ggg, ]],
-        [[     88        88  i8" "8i   dP"  "Y8ggg   d8"Yb   88bg  88   ,8" "8P" "8P""8, ]],
-        [[     88        88  I8, ,8I  i8'    ,8I    dP  I8   8I    88   I8   8I   8I  8I ]],
-        [[     88        Y8, `YbadP' ,d8,   ,d8'  ,dP   I8, ,8I  _,88,_,dP   8I   8I  Yb,]],
-        [[     88        `Y8888P"Y888P"Y8888P"    8"     "Y8P"   8P""Y88P'   8I   8I `Y8 ]],
-      }
-
+      local ascii = require 'ascii'
+      dashboard.section.header.val = ascii.get_random("text", "neovim")
       local builtin = require('telescope.builtin')
       vim.keymap.set('n', '<leader>pf', builtin.find_files, {})
       dashboard.section.buttons.val = {

@@ -2,14 +2,21 @@
 
 
 require("themery").setup({
-  themes = {
+  themes = { -- Your list of installed colorschemes
+    {
+      name = "default",
+      colorscheme = "default",
+      after = [[
+        vim.opt.background = "dark"
+        vim.api.nvim_set_hl(0, "Normal", { bg = "#000000" })
+      ]],
+    },
     {
       name = "tokyonight",
       colorscheme = "tokyonight",
       after = [[
         vim.opt.background = "dark"
         ColorMyPencils()
-      ]],
     },
     {
       name = "catppuccin",
@@ -95,7 +102,7 @@ require("themery").setup({
         vim.g.everforest_background = 'soft'
       ]],
     },
-  },                                                          -- Your list of installed colorschemes
+  },
   themeConfigFile = "~/.config/nvim/after/plugin/colors.lua", -- Described below
   livePreview = true,                                         -- Apply theme while browsing. Default to true.
 })
