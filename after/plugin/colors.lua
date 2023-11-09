@@ -12,10 +12,9 @@ end
 
 -- Themery block
 -- This block will be replaced by Themery.
-vim.cmd("colorscheme default")
+vim.cmd("colorscheme catppuccin-macchiato")
 
 vim.opt.background = "dark"
-vim.api.nvim_set_hl(0, "Normal", { bg = "#000000" })
 
-vim.g.theme_id = 1
+vim.g.theme_id = 4
 -- end themery block

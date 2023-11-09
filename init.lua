@@ -13,6 +13,7 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 local plugins = {
+
   {
     'nvim-telescope/telescope.nvim',
     tag = '0.1.1',
@@ -28,7 +29,7 @@ local plugins = {
     config = function() vim.fn['mkdp#util#install']() end,
   },
   {
-    'nacro90/numb.nvim',
+    'nacro90/numb.nvim', -- peek lines
     config = function() require('numb').setup() end,
   },
   {
@@ -48,16 +49,19 @@ local plugins = {
       { "<leader>ls", "<cmd>LBSubmit<cr>",    desc = "Submit Code" },
     },
   },
-  'edkolev/tmuxline.vim',
-  'folke/trouble.nvim',
-  'itchyny/lightline.vim',
-  'vim-airline/vim-airline',
+  'vimpostor/vim-tpipeline', -- merge tmux and vim statusline
+  'folke/trouble.nvim',      -- diagnostic and warning menu
+  {
+    'NvChad/nvim-colorizer.lua',
+    config = function()
+      require 'colorizer'.setup()
+    end
+  },
   'nvim-treesitter/playground',
   'theprimeagen/vim-with-me',
   'theprimeagen/harpoon',
   'mbbill/undotree',
-  'tpope/vim-fugitive',
-  'sindrets/diffview.nvim',
+  'tpope/vim-fugitive', -- Git inside vim!
   'folke/zen-mode.nvim',
   {
     'MaximilianLloyd/ascii.nvim',
@@ -80,19 +84,28 @@ local plugins = {
       { 'hrsh7th/nvim-cmp' },                  -- Required
       { 'hrsh7th/cmp-nvim-lsp' },              -- Required
       { 'hrsh7th/cmp-buffer' },                -- Required
-      { 'L3MON4D3/LuaSnip' },                  -- Required
+      {
+        'L3MON4D3/LuaSnip',
+        dependencies = {
+          'rafamadriz/friendly-snippets',
+        }
+      }, -- Required
       { 'saadparwaiz1/cmp_luasnip' }
     }
   },
   'neovim/nvim-lspconfig',
   'MunifTanjim/prettier.nvim',
-  'jiangmiao/auto-pairs',
+  'jiangmiao/auto-pairs', -- cursor inside brackets
   'christoomey/vim-tmux-navigator',
   'christoomey/vim-tmux-runner',
   {
     'terrortylor/nvim-comment',
     config = function()
-      require('nvim_comment').setup()
+      require('nvim_comment').setup({
+        line_mapping = "<leader>cl",
+        operator_mapping = "<leader>c",
+        comment_chunk_text_object = "ic"
+      })
     end
   },
   {
@@ -103,7 +116,7 @@ local plugins = {
       require("nvim-tree").setup {}
     end,
   },
-  "eandrju/cellular-automaton.nvim",
+  "eandrju/cellular-automaton.nvim", -- <leader>mr make it rain
   {
     "nvim-lualine/lualine.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons", opts = true },

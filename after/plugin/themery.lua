@@ -1,6 +1,5 @@
 -- Minimal config
 
-
 require("themery").setup({
   themes = { -- Your list of installed colorschemes
     {
@@ -9,6 +8,7 @@ require("themery").setup({
       after = [[
         vim.opt.background = "dark"
         vim.api.nvim_set_hl(0, "Normal", { bg = "#000000" })
+        vim.api.nvim_set_hl(0, "NormalFloat", {bg = "#111111"})
       ]],
     },
     {
@@ -17,13 +17,20 @@ require("themery").setup({
       after = [[
         vim.opt.background = "dark"
         ColorMyPencils()
+        ]],
     },
     {
       name = "catppuccin",
       colorscheme = "catppuccin",
       after = [[
         vim.opt.background = "dark"
-        ColorMyPencils()
+      ]],
+    },
+    {
+      name = "catppuccin-macchiato",
+      colorscheme = "catppuccin-macchiato",
+      after = [[
+        vim.opt.background = "dark"
       ]],
     },
     {
