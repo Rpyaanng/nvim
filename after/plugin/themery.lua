@@ -16,7 +16,6 @@ require("themery").setup({
       colorscheme = "tokyonight",
       after = [[
         vim.opt.background = "dark"
-        ColorMyPencils()
         ]],
     },
     {
@@ -41,11 +40,17 @@ require("themery").setup({
       ]],
     },
     {
+      name = "mellifluous",
+      colorscheme = "mellifluous",
+      after = [[
+        vim.opt.background = "dark"
+      ]],
+    },
+    {
       name = "bluloco-dark",
       colorscheme = "bluloco-dark",
       after = [[
         vim.opt.background = "dark"
-        ColorMyPencils()
       ]],
     },
     {
@@ -53,7 +58,6 @@ require("themery").setup({
       colorscheme = "bluloco-light",
       after = [[
         vim.opt.background = "light"
-        ColorMyPencils()
       ]],
     },
     {
@@ -61,7 +65,6 @@ require("themery").setup({
       colorscheme = "poimandres",
       after = [[
         vim.opt.background = "dark"
-        ColorMyPencils()
       ]],
     },
     {
@@ -90,7 +93,6 @@ require("themery").setup({
       colorscheme = "sonokai",
       after = [[
         vim.opt.background = "dark"
-        ColorMyPencils()
       ]],
     },
     {

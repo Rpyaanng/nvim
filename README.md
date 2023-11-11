@@ -49,4 +49,3 @@ For other keymaps please visit [/lua/ryan/keymaps.lua](/lua/ryan/remap.lua) or t
 # Other
 
 If on Windows I recommend using this with WSL in order to be able to use TMUX for access to sessions as it will make productivity 3x better.
-

@@ -14,6 +14,8 @@ vim.keymap.set("n", "N", "Nzzzv")
 
 vim.keymap.set("n", "<leader>o", "i<CR><Esc>")
 
+-- Exit Terminal mode
+vim.keymap.set("t", "<Esc>", "<C-\\><C-n>")
 
 -- greatest remap ever
 vim.keymap.set("x", "<leader>p", [["_dP]])
@@ -21,6 +23,9 @@ vim.keymap.set("x", "<leader>p", [["_dP]])
 -- next greatest remap ever : asbjornHaland
 vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
 vim.keymap.set("n", "<leader>Y", [["+Y]])
+vim.keymap.set("n", "<leader>tp", function()
+  ColorMyPencils()
+end)
 
 vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]])
 

@@ -22,6 +22,7 @@ vim.opt.tabstop = 2      -- number of spaces in tab when editing
 vim.opt.softtabstop = 2  -- number of spaces in tab when editing
 vim.opt.shiftwidth = 2   -- size of an indent
 vim.opt.expandtab = true -- use spaces instead of tabs
+vim.g.tpipeline_autoembed = 1
 
 -- Use shiftwidths at left margin and tabstops everywhere else.
 vim.opt.smarttab = true
@@ -29,7 +30,7 @@ vim.opt.smarttab = true
 vim.opt.shiftround = true     -- round indent to multiple of shiftwidth
 
 vim.opt.swapfile = false      -- no swap file
-vim.opt.backup = false        -- no backup file
+vim.opt.backup = false        -- no backup fil:qe
 vim.opt.undofile = true       -- persistent undo
 
 vim.opt.hlsearch = false      -- highlight search results

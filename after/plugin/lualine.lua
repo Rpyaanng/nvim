@@ -28,7 +28,7 @@ local modes = {
 local function lsp_progress()
   local messages = vim.lsp.util.get_progress_messages()
   if #messages == 0 then
-    return { 'tabs' }
+    return "    "
   end
   local status = {}
   for _, msg in pairs(messages) do

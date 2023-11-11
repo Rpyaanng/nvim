@@ -49,8 +49,7 @@ local plugins = {
       { "<leader>ls", "<cmd>LBSubmit<cr>",    desc = "Submit Code" },
     },
   },
-  'vimpostor/vim-tpipeline', -- merge tmux and vim statusline
-  'folke/trouble.nvim',      -- diagnostic and warning menu
+  'folke/trouble.nvim', -- diagnostic and warning menu
   {
     'NvChad/nvim-colorizer.lua',
     config = function()
@@ -130,13 +129,8 @@ local plugins = {
       require('nvim-test').setup()
     end
   },
-  {
-    "xiyaowong/virtcolumn.nvim",
-    config = function()
-      vim.g.virtcolumn_char = '▕'
-      vim.g.virtcolumn_priority = 10
-    end
-  },
+  { "xiyaowong/virtcolumn.nvim" },
+  "edkolev/tmuxline.vim",
   {
     "folke/todo-comments.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },
@@ -147,7 +141,12 @@ local plugins = {
     }
   },
   { "tpope/vim-surround" },
-  { "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {}, dependencies = { "HiPhish/rainbow-delimiters.nvim" } },
+  {
+    "lukas-reineke/indent-blankline.nvim",
+    main = "ibl",
+    opts = {},
+    dependencies = { "HiPhish/rainbow-delimiters.nvim" }
+  },
   {
     'goolord/alpha-nvim',
     event = 'VimEnter',
@@ -195,6 +194,7 @@ local plugins = {
   -- Themes Start here
   "zaldih/themery.nvim",
   "catppuccin/nvim",
+  "ramojus/mellifluous.nvim",
   'rose-pine/neovim',
   {
     'uloco/bluloco.nvim',
