@@ -87,7 +87,7 @@ local plugins = {
         'L3MON4D3/LuaSnip',
         dependencies = {
           'rafamadriz/friendly-snippets',
-        }
+        },
       }, -- Required
       { 'saadparwaiz1/cmp_luasnip' }
     }

@@ -13,8 +13,7 @@ vim.opt.autoread = true       -- automatically reload files changed outside of v
 vim.opt.nu = true             -- show line numbers
 vim.opt.relativenumber = true -- show relative line numbers
 
--- copy indent from current line when starting a new line
-vim.opt.autoindent = true
+vim.opt.smartindent = true
 
 vim.opt.showtabline = 1
 vim.opt.smartindent = true

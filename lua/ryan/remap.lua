@@ -12,7 +12,7 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 
-vim.keymap.set("n", "<leader>o", "i<CR><Esc>")
+vim.keymap.set("n", "<leader>o", "a<CR><Esc>")
 
 -- Exit Terminal mode
 vim.keymap.set("t", "<Esc>", "<C-\\><C-n>")
