@@ -61,6 +61,8 @@ local plugins = {
   'theprimeagen/harpoon',
   'mbbill/undotree',
   'tpope/vim-fugitive', -- Git inside vim!
+  'junegunn/fzf',
+  'junegunn/fzf.vim',
   'folke/zen-mode.nvim',
   {
     'MaximilianLloyd/ascii.nvim',
@@ -94,7 +96,6 @@ local plugins = {
   },
   'neovim/nvim-lspconfig',
   'MunifTanjim/prettier.nvim',
-  'jiangmiao/auto-pairs', -- cursor inside brackets
   'christoomey/vim-tmux-navigator',
   'christoomey/vim-tmux-runner',
   {
@@ -217,6 +218,7 @@ local plugins = {
   },
   'sainnhe/sonokai',
   'sainnhe/everforest',
+  'chriskempson/base16-vim',
   -- Themes end here.
 
 }

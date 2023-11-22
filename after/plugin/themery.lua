@@ -111,6 +111,13 @@ require("themery").setup({
         vim.g.everforest_background = 'soft'
       ]],
     },
+    {
+      name = "base16-default-dark",
+      colorscheme = "base16-default-dark",
+      after = [[
+        vim.opt.background = "dark"
+      ]],
+    },
   },
   themeConfigFile = "~/.config/nvim/after/plugin/colors.lua", -- Described below
   livePreview = true,                                         -- Apply theme while browsing. Default to true.
