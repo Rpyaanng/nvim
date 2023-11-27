@@ -20,6 +20,7 @@ local has_words_before = function()
   return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
 end
 
+
 local cmp = require('cmp')                       -- cmp
 local cmp_action = lsp.cmp_action()              -- cmp cmp_action
 local luasnip = require("luasnip")               -- lua snip

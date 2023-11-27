@@ -16,7 +16,7 @@ local plugins = {
 
   {
     'nvim-telescope/telescope.nvim',
-    tag = '0.1.1',
+    tag = '0.1.4',
     -- or                            , branch = '0.1.x',
     dependencies = { { 'nvim-lua/plenary.nvim' } }
   },
@@ -57,6 +57,7 @@ local plugins = {
     end
   },
   'nvim-treesitter/playground',
+  'numToStr/Comment.nvim',
   'theprimeagen/vim-with-me',
   'theprimeagen/harpoon',
   'mbbill/undotree',
