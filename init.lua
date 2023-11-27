@@ -118,13 +118,7 @@ local plugins = {
     end,
   },
   "eandrju/cellular-automaton.nvim", -- <leader>mr make it rain
-  {
-    "nvim-lualine/lualine.nvim",
-    dependencies = { "nvim-tree/nvim-web-devicons", opts = true },
-    config = function()
-      require('lualine').setup()
-    end,
-  },
+  'MunifTanjim/nougat.nvim',
   {
     "klen/nvim-test",
     config = function()
