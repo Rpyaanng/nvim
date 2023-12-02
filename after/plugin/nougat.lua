@@ -143,7 +143,19 @@ stl:add_item(Item({
   hl = { bg = color.blue, fg = color.bg },
   sep_left = sep.left_chevron_solid(true),
   prefix = " ",
-  content = core.code("P"),
+  content = function()
+    local ok, pomo = pcall(require, "pomo")
+    if not ok then
+      return ""
+    end
+
+    local timer = pomo.get_first_to_finish()
+    if timer == nil then
+      return "no timers"
+    end
+
+    return "󰄉 " .. tostring(timer)
+  end,
   suffix = " ",
 }))
 
@@ -156,6 +168,8 @@ stl_inactive:add_item(nut.spacer())
 bar_util.set_statusline(function(ctx)
   return ctx.is_focused and stl or stl_inactive
 end)
+
+-- ========== TABLINE ===========
 
 local tal = Bar("tabline")
 

@@ -24,9 +24,10 @@ end
 
 -- Themery block
 -- This block will be replaced by Themery.
-vim.cmd("colorscheme base16-default-dark")
+vim.cmd("colorscheme everforest")
 
 vim.opt.background = "dark"
+vim.g.everforest_background = 'soft'
 
-vim.g.theme_id = 16
+vim.g.theme_id = 14
 -- end themery block
