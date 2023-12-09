@@ -51,4 +51,4 @@ vim.keymap.set("n", "<leader>mr", "<cmd>CellularAutomaton make_it_rain<CR>");
 vim.keymap.set("n", "<leader>z", "<cmd>ZenMode<CR>");
 vim.keymap.set("n", "<leader><leader>", function()
   vim.cmd("so")
-end)
+end, { desc = "Source current buffer/file" })

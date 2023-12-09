@@ -87,6 +87,12 @@ local plugins = {
       { 'hrsh7th/cmp-nvim-lsp' },              -- Required
       { 'hrsh7th/cmp-buffer' },                -- Required
       {
+        "ray-x/lsp_signature.nvim",
+        event = "VeryLazy",
+        opts = {},
+        config = function(_, opts) require 'lsp_signature'.setup(opts) end
+      },
+      {
         'L3MON4D3/LuaSnip',
         dependencies = {
           'rafamadriz/friendly-snippets',
@@ -110,12 +116,14 @@ local plugins = {
     end
   },
   {
-    "nvim-tree/nvim-tree.lua",
-    version = "*", -- Or "branch:main"
-    dependencies = { "nvim-tree/nvim-web-devicons" },
-    config = function()
-      require("nvim-tree").setup {}
-    end,
+    "nvim-neo-tree/neo-tree.nvim",
+    branch = "v3.x",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+      "MunifTanjim/nui.nvim",
+      -- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
+    }
   },
   "eandrju/cellular-automaton.nvim", -- <leader>mr make it rain
   'MunifTanjim/nougat.nvim',
@@ -126,6 +134,31 @@ local plugins = {
     end
   },
   { "xiyaowong/virtcolumn.nvim" },
+  {
+    "folke/which-key.nvim",
+    event = "VeryLazy",
+    init = function()
+      vim.o.timeout = true
+      vim.o.timeoutlen = 300
+    end,
+    opts = {
+      -- your configuration comes here
+      -- or leave it empty to use the default settings
+      -- refer to the configuration section below
+    }
+  },
+  {
+    "utilyre/barbecue.nvim",
+    name = "barbecue",
+    version = "*",
+    dependencies = {
+      "SmiteshP/nvim-navic",
+      "nvim-tree/nvim-web-devicons", -- optional dependency
+    },
+    opts = {
+      -- configurations go here
+    },
+  },
   "edkolev/tmuxline.vim",
   {
     "folke/todo-comments.nvim",
@@ -137,6 +170,10 @@ local plugins = {
     }
   },
   { "tpope/vim-surround" },
+  {
+    'akinsho/bufferline.nvim',
+    dependencies = 'nvim-tree/nvim-web-devicons',
+  },
   {
     "lukas-reineke/indent-blankline.nvim",
     main = "ibl",

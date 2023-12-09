@@ -4,7 +4,7 @@ end
 
 ColorMyPencils = function()
   local normal = get_color("Normal")
-  print(normal)
+
   if normal then -- idk why this value
     vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
     vim.api.nvim_set_hl(0, "NormalNC", { bg = "none" })
@@ -16,7 +16,6 @@ ColorMyPencils = function()
       bg = 'none',
     })
   else
-    print("normal")
     local command = "colorscheme " .. vim.g.colors_name
     vim.cmd(command)
   end
@@ -24,10 +23,11 @@ end
 
 -- Themery block
 -- This block will be replaced by Themery.
-vim.cmd("colorscheme everforest")
+vim.cmd("colorscheme monokai-pro")
 
 vim.opt.background = "dark"
-vim.g.everforest_background = 'soft'
 
-vim.g.theme_id = 14
+vim.g.theme_id = 12
 -- end themery block
+
+vim.api.nvim_set_hl(0, "WinSeparator", { bg = "none" })
