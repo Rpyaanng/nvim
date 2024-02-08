@@ -12,7 +12,7 @@ require('neo-tree').setup({
     winbar = true, -- toggle to show selector on winbar
     content_layout = "center",
     tabs_layout = "equal",
-    show_separator_on_edge = true,
+    show_separator_on_edge = false,
     sources = {
       { source = "filesystem", display_name = "󰉓  files" },
       { source = "buffers", display_name = "󰈙 bufs" },

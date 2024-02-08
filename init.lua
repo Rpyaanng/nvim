@@ -87,12 +87,6 @@ local plugins = {
       { 'hrsh7th/cmp-nvim-lsp' },              -- Required
       { 'hrsh7th/cmp-buffer' },                -- Required
       {
-        "ray-x/lsp_signature.nvim",
-        event = "VeryLazy",
-        opts = {},
-        config = function(_, opts) require 'lsp_signature'.setup(opts) end
-      },
-      {
         'L3MON4D3/LuaSnip',
         dependencies = {
           'rafamadriz/friendly-snippets',
@@ -254,7 +248,7 @@ local plugins = {
       "rcarriga/nvim-notify",
     }
   },
-  -- Themes Start here
+  -- ColorScheme / Themes Start here
   "zaldih/themery.nvim",
   "catppuccin/nvim",
   "ramojus/mellifluous.nvim",
@@ -281,6 +275,7 @@ local plugins = {
   'sainnhe/sonokai',
   'sainnhe/everforest',
   'chriskempson/base16-vim',
+  'dylanaraps/wal.vim',
   -- Themes end here.
 
 }

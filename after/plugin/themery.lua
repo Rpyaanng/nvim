@@ -118,6 +118,13 @@ require("themery").setup({
         vim.opt.background = "dark"
       ]],
     },
+    {
+      name = "wal",
+      colorscheme = "wal",
+      after = [[
+        vim.opt.background = "dark"
+      ]],
+    },
   },
   themeConfigFile = "~/.config/nvim/after/plugin/colors.lua", -- Described below
   livePreview = true,                                         -- Apply theme while browsing. Default to true.
