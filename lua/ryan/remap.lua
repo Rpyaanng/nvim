@@ -1,4 +1,4 @@
--- I ripped of the ThePriemagen keymap sue me. (Please don't.)
+-- I ripped of the ThePrimeagen keymap sue me. (Please don't.)
 vim.g.mapleader = " "
 vim.cmd("")
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
@@ -12,7 +12,7 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 
-vim.keymap.set("n", "<leader>o", "a<CR><Esc>")
+vim.keymap.set("n", "<leader>o", "$a<CR><Esc>")
 
 -- Exit Terminal mode
 vim.keymap.set("t", "<Esc>", "<C-\\><C-n>")
@@ -23,7 +23,9 @@ vim.keymap.set("x", "<leader>p", [["_dP]])
 -- next greatest remap ever : asbjornHaland
 vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
 vim.keymap.set("n", "<leader>Y", [["+Y]])
-vim.keymap.set("n", "<leader>tp", function()
+
+-- Transparent Background
+vim.keymap.set("n", "<leader>tt", function()
   ColorMyPencils()
 end)
 
