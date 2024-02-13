@@ -62,6 +62,8 @@ local plugins = {
   'theprimeagen/harpoon',
   'mbbill/undotree',
   'tpope/vim-fugitive', -- Git inside vim!
+  'sindrets/diffview.nvim',
+  'akinsho/git-conflict.nvim',
   'junegunn/fzf',
   'junegunn/fzf.vim',
   'folke/zen-mode.nvim',
