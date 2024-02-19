@@ -1,3 +1,14 @@
+vim.keymap.set("n", "<M-1>", "<cmd>lua require('bufferline').go_to(1, true)<CR>", { desc = "Go to Buffer 1." })
+vim.keymap.set("n", "<M-2>", "<cmd>lua require('bufferline').go_to(2, true)<CR>", { desc = "Go to Buffer 2." })
+vim.keymap.set("n", "<M-3>", "<cmd>lua require('bufferline').go_to(3, true)<CR>", { desc = "Go to Buffer 3." })
+vim.keymap.set("n", "<M-4>", "<cmd>lua require('bufferline').go_to(4, true)<CR>", { desc = "Go to Buffer 4." })
+vim.keymap.set("n", "<M-5>", "<cmd>lua require('bufferline').go_to(5, true)<CR>", { desc = "Go to Buffer 5." })
+vim.keymap.set("n", "<M-6>", "<cmd>lua require('bufferline').go_to(6, true)<CR>", { desc = "Go to Buffer 6." })
+vim.keymap.set("n", "<M-7>", "<cmd>lua require('bufferline').go_to(7, true)<CR>", { desc = "Go to Buffer 7." })
+vim.keymap.set("n", "<M-8>", "<cmd>lua require('bufferline').go_to(8, true)<CR>", { desc = "Go to Buffer 8." })
+vim.keymap.set("n", "<M-9>", "<cmd>lua require('bufferline').go_to(9, true)<CR>", { desc = "Go to Buffer 9." })
+vim.keymap.set("n", "<M-$>", "<cmd>lua require('bufferline').go_to(-1, true)<CR>", { desc = "Go to the last buffer." })
+
 require("bufferline").setup({
   options = {
     separator_style = "slant",
@@ -6,7 +17,7 @@ require("bufferline").setup({
         filetype = "neo-tree",
         text = "EXPLORER",
         separator = true,
-        text_align = "center"
+        text_align = "center",
       },
     },
     custom_areas = {
@@ -37,14 +48,3 @@ require("bufferline").setup({
     },
   },
 })
-
-vim.keymap.set("n", "<M-1>", "<cmd>lua require('bufferline').go_to(1, true)<CR>", { desc = "Go to Buffer 1." })
-vim.keymap.set("n", "<M-2>", "<cmd>lua require('bufferline').go_to(2, true)<CR>", { desc = "Go to Buffer 2." })
-vim.keymap.set("n", "<M-3>", "<cmd>lua require('bufferline').go_to(3, true)<CR>", { desc = "Go to Buffer 3." })
-vim.keymap.set("n", "<M-4>", "<cmd>lua require('bufferline').go_to(4, true)<CR>", { desc = "Go to Buffer 4." })
-vim.keymap.set("n", "<M-5>", "<cmd>lua require('bufferline').go_to(5, true)<CR>", { desc = "Go to Buffer 5." })
-vim.keymap.set("n", "<M-6>", "<cmd>lua require('bufferline').go_to(6, true)<CR>", { desc = "Go to Buffer 6." })
-vim.keymap.set("n", "<M-7>", "<cmd>lua require('bufferline').go_to(7, true)<CR>", { desc = "Go to Buffer 7." })
-vim.keymap.set("n", "<M-8>", "<cmd>lua require('bufferline').go_to(8, true)<CR>", { desc = "Go to Buffer 8." })
-vim.keymap.set("n", "<M-9>", "<cmd>lua require('bufferline').go_to(9, true)<CR>", { desc = "Go to Buffer 9." })
-vim.keymap.set("n", "<M-$>", "<cmd>lua require('bufferline').go_to(-1, true)<CR>", { desc = "Go to the last buffer." })

@@ -119,8 +119,15 @@ require("themery").setup({
       ]],
     },
     {
-      name = "wal",
-      colorscheme = "wal",
+      name = "onedark",
+      colorscheme = "onedark",
+      after = [[
+        vim.opt.background = "dark"
+      ]],
+    },
+    {
+      name = "one_monokai",
+      colorscheme = "one_monokai",
       after = [[
         vim.opt.background = "dark"
       ]],

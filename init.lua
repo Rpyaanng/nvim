@@ -118,11 +118,19 @@ local plugins = {
       "nvim-lua/plenary.nvim",
       "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
       "MunifTanjim/nui.nvim",
+      'MunifTanjim/nougat.nvim',
       -- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
-    }
+    },
+    config = function()
+      local color = require("nougat.color").get()
+
+      vim.api.nvim_set_hl(0, "NeoTreeNormalNC", { link = "BufferLineBackground" })
+      vim.api.nvim_set_hl(0, "NeoTreeNormal", { link = "BufferLineBackground" })
+    end,
   },
   "eandrju/cellular-automaton.nvim", -- <leader>mr make it rain
   'MunifTanjim/nougat.nvim',
+  'MunifTanjim/nui.nvim',
   {
     "klen/nvim-test",
     config = function()
@@ -250,7 +258,7 @@ local plugins = {
       "rcarriga/nvim-notify",
     }
   },
-  -- ColorScheme / Themes Start here
+  -- ColorScheme / themes Start here
   "zaldih/themery.nvim",
   "catppuccin/nvim",
   "ramojus/mellifluous.nvim",
@@ -277,7 +285,8 @@ local plugins = {
   'sainnhe/sonokai',
   'sainnhe/everforest',
   'chriskempson/base16-vim',
-  'dylanaraps/wal.vim',
+  'cpea2506/one_monokai.nvim',
+  'navarasu/onedark.nvim',
   -- Themes end here.
 
 }

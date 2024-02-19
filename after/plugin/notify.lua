@@ -1,4 +1,11 @@
 local notify = require('notify')
+vim.api.nvim_create_autocmd({ "BufEnter" }, {
+  group = neotree_group,
+  callback = function()
+    vim.api.nvim_set_hl(0, "NeoTreeNormalNC", { link = "BufferLineBackground" })
+    vim.api.nvim_set_hl(0, "NeoTreeNormal", { link = "BufferLineBackground" })
+  end
+})
 vim.notify = require('notify')
 -- Overriding vim.notify with fancy notify if fancy notify exists
 vim.notify = notify

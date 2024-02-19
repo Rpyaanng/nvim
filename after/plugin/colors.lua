@@ -23,11 +23,11 @@ end
 
 -- Themery block
 -- This block will be replaced by Themery.
-vim.cmd("colorscheme catppuccin")
+vim.cmd("colorscheme sonokai")
 
 vim.opt.background = "dark"
 
-vim.g.theme_id = 3
+vim.g.theme_id = 13
 -- end themery block
 
 vim.api.nvim_set_hl(0, "WinSeparator", { bg = "none" })
