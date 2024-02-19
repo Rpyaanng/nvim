@@ -47,3 +47,11 @@ vim.opt.hidden = true            -- allow switching buffers without savin
 vim.opt["foldmethod"] = "indent" -- fold based on indent
 vim.opt["foldlevel"] = 99        -- open all folds by default
 vim.opt['foldenable'] = true     -- enable folding
+
+--neovide stuff
+--#region
+vim.o.guifont = "JetBrainsMono Nerd Font"
+vim.g.neovide_cursor_trail_length = 0.05
+vim.g.neovide_cursor_animation_length = 0.05
+vim.g.neovide_cursor_vfx_mode = "pixiedust"
+--#endregion
