@@ -59,7 +59,13 @@ local plugins = {
   'nvim-treesitter/playground',
   'numToStr/Comment.nvim',
   'theprimeagen/vim-with-me',
-  'theprimeagen/harpoon',
+  {
+    'theprimeagen/harpoon',
+    branch = "harpoon2",
+    require = {
+      "nvim-lua/plenary.nvim"
+    }
+  },
   'mbbill/undotree',
   'tpope/vim-fugitive', -- Git inside vim!
   'sindrets/diffview.nvim',

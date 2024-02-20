@@ -54,4 +54,8 @@ vim.o.guifont = "JetBrainsMono Nerd Font"
 vim.g.neovide_cursor_trail_length = 0.05
 vim.g.neovide_cursor_animation_length = 0.05
 vim.g.neovide_cursor_vfx_mode = "pixiedust"
+vim.g.neovide_transparency = 0.95
+vim.g.neovide_window_blurred = true
+vim.g.neovide_floating_blur_amount_x = 2.0
+vim.g.neovide_floating_blur_amount_y = 2.0
 --#endregion
