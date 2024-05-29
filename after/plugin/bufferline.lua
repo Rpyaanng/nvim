@@ -9,42 +9,61 @@ vim.keymap.set("n", "<M-8>", "<cmd>lua require('bufferline').go_to(8, true)<CR>"
 vim.keymap.set("n", "<M-9>", "<cmd>lua require('bufferline').go_to(9, true)<CR>", { desc = "Go to Buffer 9." })
 vim.keymap.set("n", "<M-$>", "<cmd>lua require('bufferline').go_to(-1, true)<CR>", { desc = "Go to the last buffer." })
 
-require("bufferline").setup({
+local bufferline = require("bufferline")
+bufferline.setup({
   options = {
-    separator_style = "slant",
+    mode = "tabs",                                  -- only show tabs and not all buffers
+    numbers = "ordinal",                            -- add tabs ordinal numbers
+    style_preset = bufferline.style_preset.default, -- default|minimal
+    color_icons = true,
+    tab_size = 22,
+    close_icon = "",
+    show_buffer_icons = true,
+    show_duplicate_prefix = false, -- show base path if tabs have the same name
+    diagnostics = "nvim_lsp",      -- nvim lsp diagnostics integration in tabs or false
+    indicator = {
+      style = "icon",              -- icon|underline|none
+    },
     offsets = {
+      -- avoid to show bufferline on top nvim-tree
       {
-        filetype = "neo-tree",
-        text = "EXPLORER",
-        separator = true,
-        text_align = "center",
+        filetype = "NvimTree",
+        text = "File Explorer", -- title on top
+        highlight = "Directory",
+        separator = true,       -- true is the default, or set custom
+      },
+      -- avoid to show bufferline on top saga outline symbols
+      {
+        filetype = "sagaoutline",
+        text = "Symbols",  -- title on top
+        highlight = "Directory",
+        separator = false, -- true is the default, or set custom
       },
     },
-    custom_areas = {
-      right = function()
-        local result = {}
-        local seve = vim.diagnostic.severity
-        local error = #vim.diagnostic.get(0, { severity = seve.ERROR })
-        local warning = #vim.diagnostic.get(0, { severity = seve.WARN })
-        local info = #vim.diagnostic.get(0, { severity = seve.INFO })
-        local hint = #vim.diagnostic.get(0, { severity = seve.HINT })
-        if error ~= 0 then
-          table.insert(result, { text = "  " .. error, fg = "#EC5241" })
-        end
+    diagnostics_indicator = function(count, level) -- diagnostics format
+      return " " .. count
+    end,
+    -- exclude some buffer and file types
+    custom_filter = function(buf_number)
+      local buftype = vim.api.nvim_buf_get_option(buf_number, "buftype")
+      local filetype = vim.api.nvim_buf_get_option(buf_number, "filetype")
 
-        if warning ~= 0 then
-          table.insert(result, { text = "  " .. warning, fg = "#EFB839" })
-        end
+      -- exclude list
+      local excluded_filetypes = {
+        ["terminal"] = true,
+        ["TelescopePrompt"] = true,
+        ["NvimTree"] = true,
+        ["sagaoutline"] = true,
+        ["sagafinder"] = true,
+        ["starter"] = true,
+      }
 
-        if hint ~= 0 then
-          table.insert(result, { text = "  " .. hint, fg = "#A3BA5E" })
-        end
+      local excluded_buftypes = {
+        ["nofile"] = true,
+        ["terminal"] = true,
+      }
 
-        if info ~= 0 then
-          table.insert(result, { text = "  " .. info, fg = "#7EA9A7" })
-        end
-        return result
-      end,
-    },
+      return not excluded_buftypes[buftype] and not excluded_filetypes[filetype]
+    end,
   },
 })

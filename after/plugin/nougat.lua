@@ -152,30 +152,6 @@ stl:add_item(Item({
   suffix = " ",
 }))
 
-stl:add_item(Item({
-  hidden = function()
-    local _, pomo = pcall(require, "pomo")
-    return pomo.get_first_to_finish() == nil
-  end,
-  hl = { bg = color.blue, fg = color.bg },
-  sep_left = sep.left_chevron_solid(true),
-  prefix = " ",
-  content = function()
-    local ok, pomo = pcall(require, "pomo")
-    if not ok then
-      return ""
-    end
-
-    local timer = pomo.get_first_to_finish()
-    if timer == nil then
-      return "no timers"
-    end
-
-    return "󰄉 " .. tostring(timer)
-  end,
-  suffix = " ",
-}))
-
 local stl_inactive = Bar("statusline")
 stl_inactive:add_item(mode)
 stl_inactive:add_item(filename)

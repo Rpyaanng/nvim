@@ -13,7 +13,6 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 local plugins = {
-
   {
     'nvim-telescope/telescope.nvim',
     tag = '0.1.4',
@@ -23,6 +22,14 @@ local plugins = {
   'nvim-lua/plenary.nvim',
   {
     'nvim-treesitter/nvim-treesitter', build = ':TSUpdate'
+  },
+  {
+    "lukas-reineke/indent-blankline.nvim",
+    main = "ibl",
+    opts = {},
+    config = function()
+      require("ibl").setup()
+    end
   },
   {
     'iamcco/markdown-preview.nvim',
@@ -118,22 +125,51 @@ local plugins = {
     end
   },
   {
-    "nvim-neo-tree/neo-tree.nvim",
-    branch = "v3.x",
+    "nvim-tree/nvim-tree.lua",
+    version = "*",
+    lazy = false,
     dependencies = {
-      "nvim-lua/plenary.nvim",
-      "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
-      "MunifTanjim/nui.nvim",
-      'MunifTanjim/nougat.nvim',
-      -- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
+      "nvim-tree/nvim-web-devicons",
     },
-    config = function()
-      local color = require("nougat.color").get()
-
-      vim.api.nvim_set_hl(0, "NeoTreeNormalNC", { link = "BufferLineBackground" })
-      vim.api.nvim_set_hl(0, "NeoTreeNormal", { link = "BufferLineBackground" })
-    end,
+    opts = {
+      view = {
+        width = 38,
+      },
+      renderer = {
+        root_folder_label = false, -- hide root directory at the top
+        indent_markers = {
+          enable = enable,         -- folder level guide
+          icons = {
+            corner = "└",
+            edge = "│",
+            item = "│",
+            bottom = "─",
+            none = " ",
+          },
+        },
+        icons = {
+          glyphs = {
+            folder = {
+              default = "",
+              open = "",
+              empty = "",
+              empty_open = "",
+            },
+            git = {
+              unstaged = "",
+              staged = "",
+              unmerged = "",
+              renamed = "➜",
+              untracked = "★",
+              deleted = "",
+              ignored = "◌",
+            },
+          },
+        },
+      },
+    },
   },
+  "nvim-tree/nvim-tree.lua",
   "eandrju/cellular-automaton.nvim", -- <leader>mr make it rain
   'MunifTanjim/nougat.nvim',
   'MunifTanjim/nui.nvim',
@@ -184,12 +220,12 @@ local plugins = {
     'akinsho/bufferline.nvim',
     dependencies = 'nvim-tree/nvim-web-devicons',
   },
-  {
-    "lukas-reineke/indent-blankline.nvim",
-    main = "ibl",
-    opts = {},
-    dependencies = { "HiPhish/rainbow-delimiters.nvim" }
-  },
+  -- {
+  --   "lukas-reineke/indent-blankline.nvim",
+  --   main = "ibl",
+  --   opts = {},
+  --   dependencies = { "HiPhish/rainbow-delimiters.nvim" }
+  -- },
   {
     'goolord/alpha-nvim',
     event = 'VimEnter',
@@ -229,41 +265,12 @@ local plugins = {
 
       dashboard.config.opts.noautocmd = true
 
-      vim.cmd [[autocmd User AlphaReady echo 'ready']]
+      vim.cmd [[autocmd User AlphaReady echo 'Ready to code!']]
 
       alpha.setup(dashboard.config)
     end
   },
-  "rcarriga/nvim-notify",
-  {
-    "epwalsh/pomo.nvim",
-    version = "*", -- Recommended, use latest release instead of latest commit
-    lazy = true,
-    cmd = { "TimerStart", "TimerRepeat" },
-    dependencies = {
-      -- Optional, but highly recommended if you want to use the "Default" timer
-      "rcarriga/nvim-notify",
-    },
-    opts = {
-      -- See below for full list of options 👇
-    },
-  },
   -- lazy.nvim
-  {
-    "folke/noice.nvim",
-    event = "VeryLazy",
-    opts = {
-      -- add any options here
-    },
-    dependencies = {
-      -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
-      "MunifTanjim/nui.nvim",
-      -- OPTIONAL:
-      --   `nvim-notify` is only needed, if you want to use the notification view.
-      --   If not available, we use `mini` as the fallback
-      "rcarriga/nvim-notify",
-    }
-  },
   -- ColorScheme / themes Start here
   "zaldih/themery.nvim",
   "catppuccin/nvim",
@@ -293,8 +300,38 @@ local plugins = {
   'chriskempson/base16-vim',
   'cpea2506/one_monokai.nvim',
   'navarasu/onedark.nvim',
-  -- Themes end here.
 
+  {
+    "diegoulloao/neofusion.nvim",
+    priority = 1000,
+    config = true,
+    opts = {
+      terminal_colors = true, -- add neovim terminal colors
+      undercurl = true,
+      underline = true,
+      bold = true,
+      italic = {
+        strings = true,
+        emphasis = true,
+        comments = true,
+        operators = false,
+        folds = true,
+      },
+      strikethrough = true,
+      invert_selection = false,
+      invert_signs = false,
+      invert_tabline = false,
+      invert_intend_guides = false,
+      inverse = true, -- invert background for search, diffs, statuslines and errors
+      palette_overrides = {},
+      overrides = {},
+      dim_inactive = false,
+      transparent_mode = true,
+    }
+
+  },
 }
+-- Themes end here.
+
 local opts = {}
 require("lazy").setup(plugins, opts)

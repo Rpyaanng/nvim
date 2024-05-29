@@ -3,8 +3,7 @@ local lsp = require("lsp-zero")
 lsp.preset("recommended")
 lsp.ensure_installed({
   'tsserver',
-  'rust_analyzer',
-  'eslint',
+  'lua_ls',
 })
 require("luasnip.loaders.from_vscode").lazy_load()
 require('luasnip').filetype_extend("javascript", { "javascriptreact" })
@@ -66,6 +65,7 @@ local cmp_snippets = {
     require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
   end,
 }
+
 
 local cmp_sources = cmp.config.sources({
     { name = 'copilot' },

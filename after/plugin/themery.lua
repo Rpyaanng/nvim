@@ -12,6 +12,14 @@ require("themery").setup({
       ]],
     },
     {
+      name = "neofusion",
+      colorscheme = "neofusion",
+      after = [[
+        vim.opt.background = "dark"
+        ColorMyPencils()
+      ]],
+    },
+    {
       name = "tokyonight",
       colorscheme = "tokyonight",
       after = [[
@@ -23,6 +31,7 @@ require("themery").setup({
       colorscheme = "catppuccin",
       after = [[
         vim.opt.background = "dark"
+        ColorMyPencils()
       ]],
     },
     {
