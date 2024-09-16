@@ -272,7 +272,6 @@ local plugins = {
   },
   -- lazy.nvim
   -- ColorScheme / themes Start here
-  "zaldih/themery.nvim",
   "catppuccin/nvim",
   "ramojus/mellifluous.nvim",
   'rose-pine/neovim',

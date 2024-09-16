@@ -21,15 +21,6 @@ ColorMyPencils = function()
   end
 end
 
--- Themery block
--- This block will be replaced by Themery.
-vim.cmd("colorscheme neofusion")
-
-vim.opt.background = "dark"
-ColorMyPencils()
-
-vim.g.theme_id = 2
--- end themery block
 
 ColorMyPencils()
 -- vim.api.nvim_set_hl(0, "WinSeparator", { bg = "none" })
