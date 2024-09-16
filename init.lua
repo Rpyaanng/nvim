@@ -39,23 +39,7 @@ local plugins = {
     'nacro90/numb.nvim', -- peek lines
     config = function() require('numb').setup() end,
   },
-  {
-    "Dhanus3133/LeetBuddy.nvim",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "nvim-telescope/telescope.nvim",
-    },
-    config = function()
-      require("leetbuddy").setup({})
-    end,
-    keys = {
-      { "<leader>lq", "<cmd>LBQuestions<cr>", desc = "List Questions" },
-      { "<leader>ll", "<cmd>LBQuestion<cr>",  desc = "View Question" },
-      { "<leader>lr", "<cmd>LBReset<cr>",     desc = "Reset Code" },
-      { "<leader>lt", "<cmd>LBTest<cr>",      desc = "Run Code" },
-      { "<leader>ls", "<cmd>LBSubmit<cr>",    desc = "Submit Code" },
-    },
-  },
+
   'folke/trouble.nvim', -- diagnostic and warning menu
   {
     'NvChad/nvim-colorizer.lua',
@@ -63,8 +47,26 @@ local plugins = {
       require 'colorizer'.setup()
     end
   },
+  {
+    "kawre/leetcode.nvim",
+    build = ":TSUpdate html",
+    dependencies = {
+      "nvim-telescope/telescope.nvim",
+      "nvim-lua/plenary.nvim", -- required by telescope
+      "MunifTanjim/nui.nvim",
+
+      -- optional
+      "nvim-treesitter/nvim-treesitter",
+      "rcarriga/nvim-notify",
+      "nvim-tree/nvim-web-devicons",
+    },
+    opts = {
+      -- configuration goes here
+    },
+  },
   'nvim-treesitter/playground',
   'numToStr/Comment.nvim',
+  'lewis6991/gitsigns.nvim',
   'theprimeagen/vim-with-me',
   {
     'theprimeagen/harpoon',

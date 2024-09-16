@@ -2,7 +2,6 @@ local lsp = require("lsp-zero")
 
 lsp.preset("recommended")
 lsp.ensure_installed({
-  'tsserver',
   'lua_ls',
 })
 require("luasnip.loaders.from_vscode").lazy_load()
