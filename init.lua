@@ -274,6 +274,14 @@ local plugins = {
   },
   -- lazy.nvim
   -- ColorScheme / themes Start here
+  {
+    "https://git.sr.ht/~swaits/colorsaver.nvim",
+    lazy = true,
+    event = "VimEnter",
+    opts = {
+      -- your options here
+    },
+  },
   "catppuccin/nvim",
   "ramojus/mellifluous.nvim",
   'rose-pine/neovim',
