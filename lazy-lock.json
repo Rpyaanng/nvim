@@ -32,6 +32,7 @@
   "mellifluous.nvim": { "branch": "main", "commit": "74cb26f4e9c3b82f6e70cfd607361e953a451ba0" },
   "monokai-pro.nvim": { "branch": "master", "commit": "44317265d93098e794b73131e58d3bba1fe26e3e" },
   "neofusion.nvim": { "branch": "main", "commit": "f1776ed91ed7aa605d7827ee498b06bd8bbc37b5" },
+  "neogit": { "branch": "master", "commit": "cfbdc888cdfb3cb675615eb96467d980b73b3da5" },
   "neovim": { "branch": "main", "commit": "8b1fd252255a7f2c41b4192a787ab62660b29f72" },
   "nougat.nvim": { "branch": "main", "commit": "1c1cde6e53d7d7c2242d125fe67552b00e235876" },
   "nui.nvim": { "branch": "main", "commit": "b58e2bfda5cea347c9d58b7f11cf3012c7b3953f" },
