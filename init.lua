@@ -39,7 +39,19 @@ local plugins = {
     'nacro90/numb.nvim', -- peek lines
     config = function() require('numb').setup() end,
   },
-
+  {
+    'windwp/nvim-autopairs',
+    event = "InsertEnter",
+    config = true
+    -- use opts = {} for passing setup options
+    -- this is equivalent to setup({}) function
+  },
+  {
+    'windwp/nvim-ts-autotag',
+    config = function()
+      require('nvim-ts-autotag').setup()
+    end
+  },
   'folke/trouble.nvim', -- diagnostic and warning menu
   {
     'NvChad/nvim-colorizer.lua',
@@ -68,15 +80,23 @@ local plugins = {
   'numToStr/Comment.nvim',
   'lewis6991/gitsigns.nvim',
   {
-    "NeogitOrg/neogit",
-    dependencies = {
-      "nvim-lua/plenary.nvim",  -- required
-      "sindrets/diffview.nvim", -- optional - Diff integration
-
-      -- Only one of these is needed.
-      "nvim-telescope/telescope.nvim", -- optional
+    "kdheepak/lazygit.nvim",
+    cmd = {
+      "LazyGit",
+      "LazyGitConfig",
+      "LazyGitCurrentFile",
+      "LazyGitFilter",
+      "LazyGitFilterCurrentFile",
     },
-    config = true
+    -- optional for floating window border decoration
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+    },
+    -- setting the keybinding for LazyGit with 'keys' is recommended in
+    -- order to load the plugin when the command is run for the first time
+    keys = {
+      { "<leader>lg", "<cmd>LazyGit<cr>", desc = "LazyGit" }
+    }
   },
   'theprimeagen/vim-with-me',
   {
@@ -260,7 +280,7 @@ local plugins = {
         dashboard.button("g", " " .. " Find text", ":Telescope live_grep <CR>"),
         dashboard.button("l", "󰒲 " .. " Lazy", ":Lazy<CR>"),
         dashboard.button("c", " " .. " Config", ":e $MYVIMRC <CR>"),
-        dashboard.button("t", "🎨" .. " Change Themes", ":Themery <CR>"),
+        dashboard.button("t", "🎨" .. " Change Themes", ":Telescope colorscheme<CR>"),
         dashboard.button("q", "X " .. " Quit nvim", ":qa<cr>"),
       }
       for _, button in ipairs(dashboard.section.buttons.val) do
@@ -317,7 +337,6 @@ local plugins = {
   },
   'sainnhe/sonokai',
   'sainnhe/everforest',
-  'chriskempson/base16-vim',
   'cpea2506/one_monokai.nvim',
   'navarasu/onedark.nvim',
 
