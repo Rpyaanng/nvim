@@ -13,18 +13,13 @@ vim.opt.autoread = true       -- automatically reload files changed outside of v
 vim.opt.nu = true             -- show line numbers
 vim.opt.relativenumber = true -- show relative line numbers
 
-vim.opt.smartindent = true
+vim.opt.cindent = true
+vim.opt.tabstop = 8      -- number of spaces in tab when editing
+vim.opt.shiftwidth = 5   -- size of an indent
+vim.opt.expandtab = true -- use spaces instead of tabs
 
 vim.opt.showtabline = 1
-vim.opt.smartindent = true
-vim.opt.tabstop = 2      -- number of spaces in tab when editing
-vim.opt.softtabstop = 2  -- number of spaces in tab when editing
-vim.opt.shiftwidth = 2   -- size of an indent
-vim.opt.expandtab = true -- use spaces instead of tabs
 vim.g.tpipeline_autoembed = 1
-
--- Use shiftwidths at left margin and tabstops everywhere else.
-vim.opt.smarttab = true
 
 vim.opt.shiftround = true -- round indent to multiple of shiftwidth
 vim.opt.laststatus = 3

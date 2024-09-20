@@ -27,9 +27,6 @@ local plugins = {
     "lukas-reineke/indent-blankline.nvim",
     main = "ibl",
     opts = {},
-    config = function()
-      require("ibl").setup()
-    end
   },
   {
     'iamcco/markdown-preview.nvim',
@@ -37,27 +34,57 @@ local plugins = {
   },
   {
     'nacro90/numb.nvim', -- peek lines
-    config = function() require('numb').setup() end,
+    config = true,
   },
   {
     'windwp/nvim-autopairs',
     event = "InsertEnter",
     config = true
-    -- use opts = {} for passing setup options
-    -- this is equivalent to setup({}) function
   },
   {
     'windwp/nvim-ts-autotag',
-    config = function()
-      require('nvim-ts-autotag').setup()
-    end
+    config = true
   },
-  'folke/trouble.nvim', -- diagnostic and warning menu
+  {
+    "folke/trouble.nvim",
+    opts = {}, -- for default options, refer to the configuration section for custom setup.
+    cmd = "Trouble",
+    keys = {
+      {
+        "<leader>xx",
+        "<cmd>Trouble diagnostics toggle<cr>",
+        desc = "Diagnostics (Trouble)",
+      },
+      {
+        "<leader>xX",
+        "<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
+        desc = "Buffer Diagnostics (Trouble)",
+      },
+      {
+        "<leader>cs",
+        "<cmd>Trouble symbols toggle focus=false<cr>",
+        desc = "Symbols (Trouble)",
+      },
+      {
+        "<leader>cl",
+        "<cmd>Trouble lsp toggle focus=false win.position=right<cr>",
+        desc = "LSP Definitions / references / ... (Trouble)",
+      },
+      {
+        "<leader>xL",
+        "<cmd>Trouble loclist toggle<cr>",
+        desc = "Location List (Trouble)",
+      },
+      {
+        "<leader>xQ",
+        "<cmd>Trouble qflist toggle<cr>",
+        desc = "Quickfix List (Trouble)",
+      },
+    },
+  },
   {
     'NvChad/nvim-colorizer.lua',
-    config = function()
-      require 'colorizer'.setup()
-    end
+    opts = {}
   },
   {
     "kawre/leetcode.nvim",
@@ -66,10 +93,9 @@ local plugins = {
       "nvim-telescope/telescope.nvim",
       "nvim-lua/plenary.nvim", -- required by telescope
       "MunifTanjim/nui.nvim",
-
       -- optional
       "nvim-treesitter/nvim-treesitter",
-      "rcarriga/nvim-notify",
+      { "rcarriga/nvim-notify", opts = { background_colour = "#0000000" } },
       "nvim-tree/nvim-web-devicons",
     },
     opts = {
@@ -108,6 +134,7 @@ local plugins = {
   },
   'mbbill/undotree',
   'tpope/vim-fugitive', -- Git inside vim!
+  'tpope/vim-sleuth',   -- Automatically set tabsizes!
   'sindrets/diffview.nvim',
   'akinsho/git-conflict.nvim',
   'junegunn/fzf',
@@ -147,16 +174,6 @@ local plugins = {
   'MunifTanjim/prettier.nvim',
   'christoomey/vim-tmux-navigator',
   'christoomey/vim-tmux-runner',
-  {
-    'terrortylor/nvim-comment',
-    config = function()
-      require('nvim_comment').setup({
-        line_mapping = "<leader>cl",
-        operator_mapping = "<leader>c",
-        comment_chunk_text_object = "ic"
-      })
-    end
-  },
   {
     "nvim-tree/nvim-tree.lua",
     version = "*",
@@ -207,12 +224,15 @@ local plugins = {
   'MunifTanjim/nougat.nvim',
   'MunifTanjim/nui.nvim',
   {
-    "klen/nvim-test",
-    config = function()
-      require('nvim-test').setup()
-    end
+    "nvim-neotest/neotest",
+    dependencies = {
+      "nvim-neotest/nvim-nio",
+      "nvim-lua/plenary.nvim",
+      "antoinemadec/FixCursorHold.nvim",
+      "nvim-treesitter/nvim-treesitter"
+    }
   },
-  { "xiyaowong/virtcolumn.nvim" },
+  "xiyaowong/virtcolumn.nvim",
   {
     "folke/which-key.nvim",
     event = "VeryLazy",
@@ -220,11 +240,7 @@ local plugins = {
       vim.o.timeout = true
       vim.o.timeoutlen = 300
     end,
-    opts = {
-      -- your configuration comes here
-      -- or leave it empty to use the default settings
-      -- refer to the configuration section below
-    }
+    opts = {}
   },
   {
     "utilyre/barbecue.nvim",
@@ -234,31 +250,24 @@ local plugins = {
       "SmiteshP/nvim-navic",
       "nvim-tree/nvim-web-devicons", -- optional dependency
     },
-    opts = {
-      -- configurations go here
-    },
+    opts = {},
   },
   "edkolev/tmuxline.vim",
   {
     "folke/todo-comments.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },
-    opts = {
-      -- your configuration comes here
-      -- or leave it empty to use the default settings
-      -- refer to the configuration section below
-    }
+    opts = {}
   },
-  { "tpope/vim-surround" },
+  {
+    "kylechui/nvim-surround",
+    version = "*", -- Use for stability; omit to use `main` branch for the latest features
+    event = "VeryLazy",
+    opts = {}
+  },
   {
     'akinsho/bufferline.nvim',
     dependencies = 'nvim-tree/nvim-web-devicons',
   },
-  -- {
-  --   "lukas-reineke/indent-blankline.nvim",
-  --   main = "ibl",
-  --   opts = {},
-  --   dependencies = { "HiPhish/rainbow-delimiters.nvim" }
-  -- },
   {
     'goolord/alpha-nvim',
     event = 'VimEnter',
@@ -309,9 +318,7 @@ local plugins = {
     "https://git.sr.ht/~swaits/colorsaver.nvim",
     lazy = true,
     event = "VimEnter",
-    opts = {
-      -- your options here
-    },
+    opts = {},
   },
   "catppuccin/nvim",
   "ramojus/mellifluous.nvim",
@@ -331,15 +338,13 @@ local plugins = {
   'projekt0n/github-nvim-theme',
   {
     "loctvl842/monokai-pro.nvim",
-    config = function()
-      require("monokai-pro").setup()
-    end
+    opts = {}
   },
+  { "bluz71/vim-moonfly-colors", name = "moonfly", lazy = false, priority = 1000 },
   'sainnhe/sonokai',
   'sainnhe/everforest',
   'cpea2506/one_monokai.nvim',
   'navarasu/onedark.nvim',
-
   {
     "diegoulloao/neofusion.nvim",
     priority = 1000,
