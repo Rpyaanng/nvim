@@ -103,7 +103,21 @@ local plugins = {
     },
   },
   'nvim-treesitter/playground',
-  'numToStr/Comment.nvim',
+  {
+    'numToStr/Comment.nvim',
+    config = function()
+      require('Comment').setup {
+        pre_hook = function()
+          return vim.bo.commentstring
+        end
+      }
+    end,
+    lazy = false,
+    dependencies = {
+      "JoosepAlviste/nvim-ts-context-commentstring",
+      'nvim-treesitter/nvim-treesitter',
+    }
+  },
   'lewis6991/gitsigns.nvim',
   {
     "kdheepak/lazygit.nvim",
@@ -345,6 +359,7 @@ local plugins = {
   'sainnhe/everforest',
   'cpea2506/one_monokai.nvim',
   'navarasu/onedark.nvim',
+  'Shatur/neovim-ayu',
   {
     "diegoulloao/neofusion.nvim",
     priority = 1000,
