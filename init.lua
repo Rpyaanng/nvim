@@ -146,6 +146,17 @@ local plugins = {
       "nvim-lua/plenary.nvim"
     }
   },
+  {
+    "numToStr/Navigator.nvim",
+    config = function()
+      require("Navigator").setup()
+      vim.keymap.set({ 'n', 't' }, '<A-h>', '<CMD>NavigatorLeft<CR>')
+      vim.keymap.set({ 'n', 't' }, '<A-l>', '<CMD>NavigatorRight<CR>')
+      vim.keymap.set({ 'n', 't' }, '<A-k>', '<CMD>NavigatorUp<CR>')
+      vim.keymap.set({ 'n', 't' }, '<A-j>', '<CMD>NavigatorDown<CR>')
+      vim.keymap.set({ 'n', 't' }, '<A-p>', '<CMD>NavigatorPrevious<CR>')
+    end,
+  },
   'mbbill/undotree',
   'tpope/vim-fugitive', -- Git inside vim!
   'tpope/vim-sleuth',   -- Automatically set tabsizes!
