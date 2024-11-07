@@ -1,4 +1,10 @@
--- Set cursor to a vertical bar in normal mode, block in visual mode,and a horizontal bar in replace mode
+require "nvchad.options"
+
+-- add yours here!
+
+-- local o = vim.o
+-- o.cursorlineopt ='both' -- to enable cursorline!
+
 vim.opt.guicursor = "n-v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20"
 
 vim.opt.termguicolors = true -- enable 24-bit RGB colors
