@@ -20,8 +20,8 @@ vim.opt.nu = true             -- show line numbers
 vim.opt.relativenumber = true -- show relative line numbers
 
 vim.opt.cindent = true
-vim.opt.tabstop = 8      -- number of spaces in tab when editing
-vim.opt.shiftwidth = 5   -- size of an indent
+vim.opt.tabstop = 2      -- number of spaces in tab when editing
+vim.opt.shiftwidth = 4   -- size of an indent
 vim.opt.expandtab = true -- use spaces instead of tabs
 
 vim.opt.showtabline = 1

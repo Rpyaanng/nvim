@@ -5,14 +5,16 @@ map("n", "<leader>ch", "<cmd>NvCheatsheet<CR>", { desc = "toggle nvcheatsheet" }
 -- Telescope
 map("n", "<leader>pf", "<cmd>Telescope find_files<cr>")
 map(
-  "n",
-  "<leader>pa",
-  "<cmd>Telescope find_files follow=true no_ignore=true hidden=true<CR>",
-  { desc = "telescope find all files" }
+     "n",
+     "<leader>pa",
+     "<cmd>Telescope find_files follow=true no_ignore=true hidden=true<CR>",
+     { desc = "telescope find all files" }
 )
-map("n", "<leader>pl", "<cmd>Telescope live_grep<CR>", { desc = "telescope live grep" })
+map("n", "<leader>pw", "<cmd>Telescope live_grep<CR>", { desc = "telescope live grep" })
+map("n", "<leader>po", "<cmd>Telescope oldfiles<CR>", { desc = "Telescope recent files" })
+
 map("n", "<leader>th", function()
-  require("nvchad.themes").open()
+     require("nvchad.themes").open()
 end, { desc = "telescope nvchad themes" })
 
 -- nvimtree
@@ -23,41 +25,41 @@ map("n", "<leader>t", "<cmd>NvimTreeFocus<CR>", { desc = "nvimtree focus window"
 map("t", "<C-x>", "<C-\\><C-N>", { desc = "terminal escape terminal mode" })
 
 map({ "n", "t" }, "<A-i>", function()
-  require("nvchad.term").toggle { pos = "float", id = "floatTerm" }
+     require("nvchad.term").toggle { pos = "float", id = "floatTerm" }
 end, { desc = "terminal toggle floating term" })
 
 -- toggleable
 map({ "n", "t" }, "<A-|>", function()
-  require("nvchad.term").toggle { pos = "vsp", id = "vtoggleTerm" }
+     require("nvchad.term").toggle { pos = "vsp", id = "vtoggleTerm" }
 end, { desc = "terminal toggleable vertical term" })
 
 map({ "n", "t" }, "<A-_>", function()
-  require("nvchad.term").toggle { pos = "sp", id = "htoggleTerm" }
+     require("nvchad.term").toggle { pos = "sp", id = "htoggleTerm" }
 end, { desc = "terminal toggleable horizontal term" })
 
 -- format document
 map("n", "<leader>fm", function()
-  require("conform").format { lsp_fallback = true }
+     require("conform").format { lsp_fallback = true }
 end, { desc = "general format file" })
 
 -- Tab Navigation
 map("n", "<tab>", function()
-  require("nvchad.tabufline").next()
+     require("nvchad.tabufline").next()
 end, { desc = "buffer goto next" })
 
 map("n", "<S-tab>", function()
-  require("nvchad.tabufline").prev()
+     require("nvchad.tabufline").prev()
 end, { desc = "buffer goto prev" })
 
 map("n", "<leader>x", function()
-  require("nvchad.tabufline").close_buffer()
+     require("nvchad.tabufline").close_buffer()
 end, { desc = "buffer close" })
 
 -- whichkey
 map("n", "<leader>wK", "<cmd>WhichKey <CR>", { desc = "whichkey all keymaps" })
 
 map("n", "<leader>wk", function()
-  vim.cmd("WhichKey " .. vim.fn.input "WhichKey: ")
+     vim.cmd("WhichKey " .. vim.fn.input "WhichKey: ")
 end, { desc = "whichkey query lookup" })
 
 -- Comment
@@ -116,6 +118,6 @@ map("n", "<leader>vpp", "<cmd>e $MYVIMRC<CR>");
 map("n", "<leader>mr", "<cmd>CellularAutomaton make_it_rain<CR>");
 map("n", "<leader>z", "<cmd>ZenMode<CR>");
 map("n", "<leader><leader>", function()
-  vim.cmd("source")
-  print("Sourced file.")
+     vim.cmd("source")
+     print("Sourced file.")
 end, { desc = "Source current buffer/file" })
